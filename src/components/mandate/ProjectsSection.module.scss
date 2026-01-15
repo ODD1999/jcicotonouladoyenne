@@ -1,0 +1,360 @@
+@import '../../styles/variables';
+
+.projectsSection {
+  padding: $spacing-5xl 0;
+  background: var(--bg-primary);
+  position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.title {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  color: var(--text-primary);
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.gradientText {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: $font-size-xl;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: $line-height-relaxed;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-2xl;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.projectCard {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-2xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out both;
+  display: flex;
+  flex-direction: column;
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+  &:nth-child(6) { animation-delay: 0.6s; }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 70px rgba(0, 83, 176, 0.2);
+    border-color: rgba(0, 83, 176, 0.4);
+    z-index: 10;
+
+    .projectIcon {
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    .cardShine {
+      transform: translateX(200%);
+    }
+  }
+
+  &.green {
+    border-color: rgba(34, 197, 94, 0.3);
+
+    &:hover {
+      border-color: rgba(34, 197, 94, 0.5);
+    }
+  }
+
+  &.orange {
+    border-color: rgba(252, 63, 0, 0.3);
+
+    &:hover {
+      border-color: rgba(252, 63, 0, 0.5);
+    }
+  }
+}
+
+.projectImage {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(0, 83, 176, 0.1) 0%, rgba(0, 83, 176, 0.2) 100%);
+  border-radius: $border-radius-2xl $border-radius-2xl 0 0;
+  overflow: hidden;
+  margin: -2px -2px 0 -2px;
+
+  .projectCard.green & {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.2) 100%);
+  }
+
+  .projectCard.orange & {
+    background: linear-gradient(135deg, rgba(252, 63, 0, 0.1) 0%, rgba(252, 63, 0, 0.2) 100%);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    height: 160px;
+  }
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.3) 100%);
+  transition: all 0.4s ease;
+
+  .projectCard:hover & {
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.2) 100%);
+  }
+}
+
+.projectIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary-blue;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .projectCard:hover & {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .projectCard.green & {
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .projectCard.orange & {
+    color: $accent-orange;
+    border-color: rgba(252, 63, 0, 0.3);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    width: 60px;
+    height: 60px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.cardContent {
+  padding: $spacing-2xl;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.statusBadge {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  &.green {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+  }
+
+  &.blue {
+    background: rgba(0, 83, 176, 0.1);
+    color: $primary-blue;
+  }
+
+  &.orange {
+    background: rgba(252, 63, 0, 0.1);
+    color: $accent-orange;
+  }
+}
+
+.projectTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+  line-height: $line-height-tight;
+  transition: all 0.3s ease;
+
+  .projectCard:hover & {
+    background: $gradient-accent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.projectDescription {
+  font-size: $font-size-base;
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-xl;
+}
+
+.progressSection {
+  margin-top: auto;
+  padding-top: $spacing-lg;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-sm;
+}
+
+.progressLabel {
+  font-size: $font-size-sm;
+  color: var(--text-muted);
+  font-weight: $font-weight-medium;
+}
+
+.progressValue {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-secondary);
+  border-radius: $border-radius-full;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: $gradient-accent;
+  border-radius: $border-radius-full;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(255, 172, 0, 0.5);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+}
+
+.cardShine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

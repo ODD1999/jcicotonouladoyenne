@@ -1,0 +1,384 @@
+@import '../../styles/variables';
+
+.ctaSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: $spacing-5xl 0;
+
+  @media (max-width: $breakpoint-md) {
+    min-height: auto;
+    padding: $spacing-4xl 0;
+  }
+}
+
+.backgroundImage {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  right: 0;
+  bottom: -10%;
+  background: linear-gradient(135deg, #001a33 0%, #002952 100%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+
+  @media (max-width: $breakpoint-md) {
+    background-attachment: scroll;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 26, 51, 0.95) 0%, rgba(0, 41, 82, 0.92) 100%);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(0, 83, 176, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0, 26, 51, 0.15) 0%, transparent 50%);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: $spacing-4xl;
+  align-items: center;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+    padding: 0 $spacing-lg;
+  }
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $white;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $accent-yellow;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px $accent-yellow;
+}
+
+.title {
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  color: $white;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-5xl;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.gradientText {
+  // background: linear-gradient(135deg, $accent-yellow 0%, $accent-yellow-light 100%);
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.description {
+  font-size: $font-size-xl;
+  line-height: $line-height-relaxed;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  max-width: 650px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  margin: $spacing-lg 0;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: $border-radius-xl;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all $transition-base;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(10px);
+  }
+}
+
+.featureIcon {
+  font-size: $font-size-4xl;
+  flex-shrink: 0;
+}
+
+.featureText {
+  flex: 1;
+
+  h4 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $white;
+    margin: 0 0 $spacing-xs 0;
+  }
+
+  p {
+    font-size: $font-size-base;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    line-height: $line-height-relaxed;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-lg;
+  flex-wrap: wrap;
+  margin-top: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.primaryButton {
+  padding: $spacing-lg $spacing-2xl;
+  background: $white;
+  color: $primary-blue-dark;
+  border-radius: $border-radius-xl;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    background: $accent-yellow;
+    color: $white;
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+  }
+}
+
+.secondaryButton {
+  padding: $spacing-lg $spacing-2xl;
+  background: transparent;
+  color: $white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: $border-radius-xl;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  transition: all $transition-base;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: $white;
+    transform: translateY(-3px);
+    color: $white;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+  }
+}
+
+.contactCard {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $border-radius-2xl;
+  padding: $spacing-3xl;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: slideInRight 0.8s ease-out;
+
+  @media (max-width: $breakpoint-lg) {
+    animation: fadeIn 0.8s ease-out;
+  }
+}
+
+.cardTitle {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $white;
+  margin: 0 0 $spacing-2xl 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-lg;
+}
+
+.contactIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: $border-radius-lg;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  flex-shrink: 0;
+  transition: all $transition-base;
+
+  .contactItem:hover & {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+  }
+}
+
+.contactText {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  flex: 1;
+}
+
+.contactLabel {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contactValue {
+  font-size: $font-size-lg;
+  color: $white;
+  font-weight: $font-weight-semibold;
+}
+
+.decorativeShapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape1,
+.shape2,
+.shape3 {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(60px);
+}
+
+.shape1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -200px;
+  animation: float 15s ease-in-out infinite;
+}
+
+.shape2 {
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: -100px;
+  animation: float 18s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.shape3 {
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 40%;
+  animation: float 12s ease-in-out infinite;
+  animation-delay: 6s;
+}

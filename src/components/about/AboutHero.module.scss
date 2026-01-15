@@ -1,0 +1,290 @@
+@import '../../styles/variables';
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-primary);
+  padding: 120px $spacing-xl $spacing-5xl;
+
+  @media (max-width: $breakpoint-md) {
+    min-height: 90vh;
+    padding: 100px $spacing-lg $spacing-4xl;
+  }
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 26, 51, 0.92) 0%, rgba(0, 83, 176, 0.88) 100%);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    background-attachment: scroll;
+  }
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.gradientOrb1,
+.gradientOrb2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.2;
+  animation: float 12s ease-in-out infinite;
+}
+
+.gradientOrb1 {
+  width: 600px;
+  height: 600px;
+  background: $gradient-accent;
+  top: -200px;
+  right: -150px;
+  animation-delay: 0s;
+}
+
+.gradientOrb2 {
+  width: 500px;
+  height: 500px;
+  background: $gradient-blue;
+  bottom: -150px;
+  left: -100px;
+  animation-delay: 3s;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  max-width: 1000px;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: $spacing-xl;
+  animation: fadeIn 0.6s ease-out 0.2s both;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $accent-yellow;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 12px $accent-yellow;
+}
+
+.title {
+  font-size: 4.5rem;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  color: $white;
+  margin-bottom: $spacing-xl;
+  animation: fadeIn 0.6s ease-out 0.4s both;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: 3.5rem;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 2.75rem;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 2.25rem;
+  }
+}
+
+.gradientText {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.subtitle {
+  font-size: $font-size-2xl;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: $line-height-relaxed;
+  max-width: 800px;
+  margin: 0 auto $spacing-4xl;
+  animation: fadeIn 0.6s ease-out 0.6s both;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-xl;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-2xl;
+  margin-top: $spacing-4xl;
+  animation: fadeIn 0.6s ease-out 0.8s both;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $border-radius-xl;
+  padding: $spacing-2xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 83, 176, 0.1), transparent);
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+.statNumber {
+  font-size: 3.5rem;
+  font-weight: $font-weight-extrabold;
+  color: $white;
+  line-height: 1.2;
+  margin-bottom: $spacing-sm;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 3rem;
+  }
+}
+
+.statLabel {
+  font-size: $font-size-base;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: $font-weight-medium;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: $spacing-2xl;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  animation: fadeIn 0.6s ease-out 1s both;
+  z-index: 10;
+
+  svg {
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    bottom: $spacing-xl;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}

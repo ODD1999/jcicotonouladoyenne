@@ -1,0 +1,175 @@
+// JCI Cotonou la Doyenne - Design System Variables
+
+// ============================================
+// COLOR PALETTE
+// ============================================
+
+// Primary Colors
+$primary-blue: #0053B0;
+$primary-blue-dark: #003d82;
+$primary-blue-light: #1a6bc4;
+$primary-blue-lighter: #3d85d8;
+
+// Accent Gradient Colors
+$accent-yellow: #FFAC00;
+$accent-orange: #FC3F00;
+$accent-yellow-light: #FFD166;
+$accent-orange-dark: #D63500;
+
+// Neutral Colors
+$white: #FFFFFF;
+$black: #0A0B0D;
+$off-white: #FAFBFC;
+$off-black: #1A1B1E;
+
+// Gray Scale - Refined
+$gray-50: #F8F9FA;
+$gray-100: #E9ECEF;
+$gray-200: #DEE2E6;
+$gray-300: #CED4DA;
+$gray-400: #ADB5BD;
+$gray-500: #6C757D;
+$gray-600: #495057;
+$gray-700: #343A40;
+$gray-800: #212529;
+$gray-900: #0D0E10;
+
+// ============================================
+// THEME COLORS - LIGHT MODE
+// ============================================
+$light-bg-primary: $white;
+$light-bg-secondary: $gray-50;
+$light-bg-tertiary: $gray-100;
+$light-text-primary: $gray-900;
+$light-text-secondary: $gray-700;
+$light-text-muted: $gray-500;
+$light-border: $gray-200;
+$light-shadow: rgba(0, 83, 176, 0.06);
+$light-shadow-lg: rgba(0, 83, 176, 0.12);
+$light-card-bg: $white;
+$light-card-border: rgba(0, 83, 176, 0.08);
+
+// ============================================
+// THEME COLORS - DARK MODE
+// ============================================
+$dark-bg-primary: #0B0E14;
+$dark-bg-secondary: #141821;
+$dark-bg-tertiary: #1C2230;
+$dark-text-primary: $gray-50;
+$dark-text-secondary: $gray-300;
+$dark-text-muted: $gray-400;
+$dark-border: rgba(255, 255, 255, 0.08);
+$dark-shadow: rgba(0, 0, 0, 0.4);
+$dark-shadow-lg: rgba(0, 0, 0, 0.6);
+$dark-card-bg: rgba(255, 255, 255, 0.03);
+$dark-card-border: rgba(255, 255, 255, 0.06);
+
+// ============================================
+// GRADIENTS
+// ============================================
+$gradient-accent: linear-gradient(135deg, $accent-yellow 0%, $accent-orange 100%);
+$gradient-accent-soft: linear-gradient(135deg, rgba(255, 172, 0, 0.15) 0%, rgba(252, 63, 0, 0.15) 100%);
+$gradient-accent-hover: linear-gradient(135deg, $accent-yellow-light 0%, $accent-orange 100%);
+$gradient-blue: linear-gradient(135deg, $primary-blue-light 0%, $primary-blue-dark 100%);
+$gradient-blue-soft: linear-gradient(135deg, rgba(0, 83, 176, 0.1) 0%, rgba(0, 61, 130, 0.2) 100%);
+
+// Overlay gradients - More subtle
+$gradient-dark-overlay: linear-gradient(180deg, rgba(11, 14, 20, 0) 0%, rgba(11, 14, 20, 0.85) 100%);
+$gradient-light-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.92) 100%);
+$gradient-mask-dark: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 100%);
+$gradient-mask-light: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.5) 100%);
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+// Font Sizes
+$font-size-xs: 0.75rem;      // 12px
+$font-size-sm: 0.875rem;     // 14px
+$font-size-base: 1rem;       // 16px
+$font-size-lg: 1.125rem;     // 18px
+$font-size-xl: 1.25rem;      // 20px
+$font-size-2xl: 1.5rem;      // 24px
+$font-size-3xl: 1.875rem;    // 30px
+$font-size-4xl: 2.25rem;     // 36px
+$font-size-5xl: 3rem;        // 48px
+$font-size-6xl: 3.75rem;     // 60px
+$font-size-7xl: 4.5rem;      // 72px
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Line Heights
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ============================================
+// SPACING
+// ============================================
+$spacing-xs: 0.25rem;    // 4px
+$spacing-sm: 0.5rem;     // 8px
+$spacing-md: 1rem;       // 16px
+$spacing-lg: 1.5rem;     // 24px
+$spacing-xl: 2rem;       // 32px
+$spacing-2xl: 3rem;      // 48px
+$spacing-3xl: 4rem;      // 64px
+$spacing-4xl: 6rem;      // 96px
+$spacing-5xl: 8rem;      // 128px
+
+// ============================================
+// BORDERS
+// ============================================
+$border-radius-sm: 0.375rem;   // 6px
+$border-radius-md: 0.5rem;     // 8px
+$border-radius-lg: 0.75rem;    // 12px
+$border-radius-xl: 1rem;       // 16px
+$border-radius-2xl: 1.5rem;    // 24px
+$border-radius-full: 9999px;
+
+$border-width: 1px;
+$border-width-thick: 2px;
+
+// ============================================
+// SHADOWS
+// ============================================
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// ============================================
+// TRANSITIONS
+// ============================================
+$transition-fast: 150ms ease-in-out;
+$transition-base: 300ms ease-in-out;
+$transition-slow: 500ms ease-in-out;
+
+// ============================================
+// BREAKPOINTS
+// ============================================
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// ============================================
+// Z-INDEX
+// ============================================
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;

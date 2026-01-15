@@ -1,0 +1,261 @@
+@import '../../styles/variables';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-fixed;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s ease;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  &:not(.scrolled) {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+  }
+
+  &.scrolled {
+    background: var(--nav-bg);
+    border-bottom-color: var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $spacing-lg $spacing-xl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-xl;
+
+  @media (max-width: $breakpoint-lg) {
+    padding: $spacing-md $spacing-lg;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  text-decoration: none;
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.logoIcon {
+  width: 50px;
+  height: 50px;
+  background: $gradient-accent;
+  border-radius: $border-radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  color: $white;
+  box-shadow: $shadow-lg;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  @media (max-width: $breakpoint-sm) {
+    display: none;
+  }
+}
+
+.logoTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $white;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+
+  .scrolled & {
+    color: var(--text-primary);
+    text-shadow: none;
+  }
+}
+
+.logoSubtitle {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+
+  .scrolled & {
+    color: var(--text-muted);
+    text-shadow: none;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xl;
+  flex: 1;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-lg) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-primary);
+    flex-direction: column;
+    justify-content: center;
+    gap: $spacing-2xl;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-base;
+    z-index: $z-index-modal;
+
+    &.mobileOpen {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.navLink {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $white;
+  text-decoration: none;
+  position: relative;
+  padding: $spacing-sm 0;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $gradient-accent;
+    transition: width $transition-base;
+  }
+
+  &:hover {
+    color: $white;
+    transform: translateY(-1px);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  .scrolled & {
+    color: var(--text-secondary);
+    text-shadow: none;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-2xl;
+    color: var(--text-primary);
+    text-shadow: none;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.themeToggle {
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-lg;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(15deg);
+  }
+
+  .scrolled & {
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+  }
+}
+
+.ctaButton {
+  padding: $spacing-sm $spacing-lg;
+  background: $gradient-accent;
+  color: $white;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  text-decoration: none;
+  transition: all $transition-base;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    color: $white;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
+}
+
+.mobileMenuToggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: $white;
+  cursor: pointer;
+  z-index: $z-index-modal + 10;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+  .scrolled & {
+    color: var(--text-primary);
+    text-shadow: none;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

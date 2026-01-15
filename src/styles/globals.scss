@@ -1,0 +1,386 @@
+@import './variables';
+@import './themes';
+
+// ============================================
+// GLOBAL RESET & BASE STYLES
+// ============================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+  overflow-x: hidden;
+}
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-extrabold;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-4xl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-3xl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-2xl;
+}
+
+h5 {
+  font-size: $font-size-xl;
+}
+
+h6 {
+  font-size: $font-size-lg;
+}
+
+p {
+  margin-bottom: $spacing-md;
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all $transition-fast;
+  
+  &:hover {
+    color: var(--primary-dark);
+    text-decoration: none;
+  }
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+
+.gradient-text {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-accent {
+  background: $gradient-accent;
+}
+
+.gradient-blue {
+  background: $gradient-blue;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+// ============================================
+// CUSTOM SCROLLBAR
+// ============================================
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: $border-radius-full;
+  
+  &:hover {
+    background: var(--text-muted);
+  }
+}
+
+// ============================================
+// SELECTION
+// ============================================
+
+::selection {
+  background: $primary-blue;
+  color: $white;
+}
+
+::-moz-selection {
+  background: $primary-blue;
+  color: $white;
+}
+
+// ============================================
+// CONTAINER
+// ============================================
+
+.container-custom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+// ============================================
+// CARDS
+// ============================================
+
+.card-custom {
+  background: var(--card-bg);
+  border-radius: $border-radius-xl;
+  padding: $spacing-xl;
+  border: 1px solid var(--border-color);
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+    background: var(--card-hover-bg);
+  }
+}
+
+// ============================================
+// BUTTONS
+// ============================================
+
+.btn-gradient {
+  background: $gradient-accent;
+  color: $white;
+  border: none;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all $transition-base;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  
+  &:hover {
+    background: $gradient-accent-hover;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    color: $white;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: $white;
+  border: none;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all $transition-base;
+  
+  &:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    color: $white;
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all $transition-base;
+  
+  &:hover {
+    background: var(--primary);
+    color: $white;
+    transform: translateY(-2px);
+  }
+}
+
+// ============================================
+// SECTIONS
+// ============================================
+
+.section {
+  padding: $spacing-5xl 0;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  
+  h2 {
+    margin-bottom: $spacing-md;
+  }
+  
+  p {
+    font-size: $font-size-lg;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+// ============================================
+// OVERLAYS
+// ============================================
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-gradient);
+  z-index: 1;
+}
+
+// ============================================
+// BACKDROP BLUR
+// ============================================
+
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

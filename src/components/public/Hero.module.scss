@@ -1,0 +1,401 @@
+@import '../../styles/variables';
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    min-height: auto;
+    padding: 120px 0 $spacing-5xl;
+  }
+}
+
+.backgroundPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gradientOrb1,
+.gradientOrb2,
+.gradientOrb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+}
+
+.gradientOrb1 {
+  width: 500px;
+  height: 500px;
+  background: $gradient-accent;
+  top: -200px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.gradientOrb2 {
+  width: 400px;
+  height: 400px;
+  background: $gradient-blue;
+  bottom: 120px;
+  left: -100px;
+  animation-delay: 2s;
+}
+
+.gradientOrb3 {
+  width: 300px;
+  height: 300px;
+  background: $gradient-blue-soft;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 4s;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-4xl;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  animation: slideInLeft 0.8s ease-out;
+
+  @media (max-width: $breakpoint-lg) {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  width: fit-content;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $gradient-accent;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.title {
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  color: var(--text-primary);
+  margin: 0;
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-5xl;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.gradientText {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.description {
+  font-size: $font-size-xl;
+  line-height: $line-height-relaxed;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 600px;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xl;
+  padding: $spacing-xl 0;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.statValue {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-extrabold;
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: $font-size-sm;
+  color: var(--text-muted);
+  font-weight: $font-weight-medium;
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--border-color);
+
+  @media (max-width: $breakpoint-sm) {
+    display: none;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-lg;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.primaryButton {
+  padding: $spacing-lg $spacing-2xl;
+  background: $gradient-accent;
+  color: $white;
+  border-radius: $border-radius-xl;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-lg;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  transition: all $transition-base;
+  box-shadow: $shadow-lg;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-2xl;
+    color: $white;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+  }
+}
+
+.secondaryButton {
+  padding: $spacing-lg $spacing-2xl;
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-xl;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-lg;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-md;
+  transition: all $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+  }
+}
+
+.playIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $gradient-accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+}
+
+.imageSection {
+  position: relative;
+  animation: slideInRight 0.8s ease-out;
+
+  @media (max-width: $breakpoint-lg) {
+    display: none;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+.imagePlaceholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: $gradient-blue;
+  border-radius: $border-radius-2xl;
+  overflow: hidden;
+  box-shadow: $shadow-2xl;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-gradient);
+}
+
+.floatingCard1,
+.floatingCard2 {
+  position: absolute;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-xl;
+  padding: $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  box-shadow: $shadow-xl;
+  backdrop-filter: blur(10px);
+  animation: float 3s ease-in-out infinite;
+}
+
+.floatingCard1 {
+  top: 80px;
+  right: -30px;
+  animation-delay: 0s;
+}
+
+.floatingCard2 {
+  bottom: 100px;
+  left: -30px;
+  animation-delay: 1.5s;
+}
+
+.cardIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: $border-radius-lg;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-2xl;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+}
+
+.cardSubtitle {
+  font-size: $font-size-sm;
+  color: var(--text-muted);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: $spacing-2xl;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  animation: fadeIn 1s ease-out 1s both;
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
+}
+
+.mouse {
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-full;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.wheel {
+  width: 3px;
+  height: 8px;
+  background: var(--text-muted);
+  border-radius: $border-radius-full;
+  animation: scroll 2s ease-in-out infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,101 @@
+@import './variables';
+
+// ============================================
+// LIGHT THEME
+// ============================================
+[data-theme='light'] {
+  // Backgrounds
+  --bg-primary: #{$light-bg-primary};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-tertiary: #{$light-bg-tertiary};
+  
+  // Text
+  --text-primary: #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --text-muted: #{$light-text-muted};
+  
+  // Borders
+  --border-color: #{$light-border};
+  
+  // Shadows
+  --shadow: #{$light-shadow};
+  --shadow-lg: #{$light-shadow-lg};
+  
+  // Brand Colors
+  --primary: #{$primary-blue};
+  --primary-dark: #{$primary-blue-dark};
+  --primary-light: #{$primary-blue-light};
+  --accent-yellow: #{$accent-yellow};
+  --accent-orange: #{$accent-orange};
+  
+  // Overlays
+  --overlay-gradient: #{$gradient-light-overlay};
+  --mask-gradient: #{$gradient-mask-light};
+  
+  // Card backgrounds
+  --card-bg: #{$light-card-bg};
+  --card-border: #{$light-card-border};
+  --card-hover-bg: #{$light-bg-secondary};
+  
+  // Navigation
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-border: #{$light-border};
+}
+
+// ============================================
+// DARK THEME
+// ============================================
+[data-theme='dark'] {
+  // Backgrounds
+  --bg-primary: #{$dark-bg-primary};
+  --bg-secondary: #{$dark-bg-secondary};
+  --bg-tertiary: #{$dark-bg-tertiary};
+  
+  // Text
+  --text-primary: #{$dark-text-primary};
+  --text-secondary: #{$dark-text-secondary};
+  --text-muted: #{$dark-text-muted};
+  
+  // Borders
+  --border-color: #{$dark-border};
+  
+  // Shadows
+  --shadow: #{$dark-shadow};
+  --shadow-lg: #{$dark-shadow-lg};
+  
+  // Brand Colors
+  --primary: #{$primary-blue-light};
+  --primary-dark: #{$primary-blue-dark};
+  --primary-light: #{$primary-blue-lighter};
+  --accent-yellow: #{$accent-yellow-light};
+  --accent-orange: #{$accent-orange};
+  
+  // Overlays
+  --overlay-gradient: #{$gradient-dark-overlay};
+  --mask-gradient: #{$gradient-mask-dark};
+  
+  // Card backgrounds
+  --card-bg: #{$dark-card-bg};
+  --card-border: #{$dark-card-border};
+  --card-hover-bg: #{$dark-bg-tertiary};
+  
+  // Navigation
+  --nav-bg: rgba(20, 24, 33, 0.85);
+  --nav-border: #{$dark-border};
+}
+
+// ============================================
+// GLOBAL THEME STYLES
+// ============================================
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color $transition-base, color $transition-base;
+}
+
+// Smooth transitions for theme switching
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: $transition-base;
+  transition-timing-function: ease-in-out;
+}

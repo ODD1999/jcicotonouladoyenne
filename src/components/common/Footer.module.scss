@@ -1,0 +1,228 @@
+@import '../../styles/variables';
+
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: $spacing-5xl 0 $spacing-xl;
+  // margin-top: $spacing-5xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-4xl 0 $spacing-lg;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: $spacing-4xl;
+  padding-bottom: $spacing-4xl;
+  border-bottom: 1px solid var(--border-color);
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+  }
+}
+
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.logoIcon {
+  width: 50px;
+  height: 50px;
+  background: $gradient-accent;
+  border-radius: $border-radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $font-weight-extrabold;
+  font-size: $font-size-lg;
+  color: $white;
+  box-shadow: $shadow-lg;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logoTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.logoSubtitle {
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.description {
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  max-width: 400px;
+  margin: 0;
+}
+
+.socialLinks {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.socialLink {
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-lg;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $gradient-accent;
+    border-color: transparent;
+    color: $white;
+    transform: translateY(-3px);
+  }
+}
+
+.linksSection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+  }
+}
+
+.linkColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.columnTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.link {
+  color: var(--text-secondary);
+  font-size: $font-size-sm;
+  text-decoration: none;
+  transition: all $transition-fast;
+  display: inline-block;
+
+  &:hover {
+    color: var(--primary);
+    transform: translateX(4px);
+  }
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  color: var(--text-secondary);
+  font-size: $font-size-sm;
+
+  svg {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $spacing-xl;
+  gap: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.copyright {
+  color: var(--text-muted);
+  font-size: $font-size-sm;
+  margin: 0;
+}
+
+.legalLinks {
+  display: flex;
+  gap: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.legalLink {
+  color: var(--text-muted);
+  font-size: $font-size-sm;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}

@@ -1,0 +1,263 @@
+@import '../../styles/variables';
+
+.visionMissionSection {
+  padding: $spacing-5xl 0;
+  background: var(--bg-secondary);
+  position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.title {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  color: var(--text-primary);
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.gradientText {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mainCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-2xl;
+  padding: $spacing-3xl;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out both;
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 83, 176, 0.05), transparent);
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 70px rgba(0, 83, 176, 0.15);
+    border-color: rgba(0, 83, 176, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+
+    .iconWrapper {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: $border-radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $spacing-xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.blue {
+    background: linear-gradient(135deg, rgba(0, 83, 176, 0.1) 0%, rgba(0, 83, 176, 0.25) 100%);
+    color: $primary-blue;
+  }
+
+  &.yellow {
+    background: linear-gradient(135deg, rgba(255, 172, 0, 0.1) 0%, rgba(255, 172, 0, 0.25) 100%);
+    color: $accent-yellow;
+  }
+
+  &.orange {
+    background: linear-gradient(135deg, rgba(252, 63, 0, 0.1) 0%, rgba(252, 63, 0, 0.25) 100%);
+    color: $accent-orange;
+  }
+}
+
+.cardTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+  line-height: $line-height-tight;
+}
+
+.cardDescription {
+  font-size: $font-size-lg;
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  margin: 0;
+}
+
+.credoSection {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-2xl;
+  padding: $spacing-4xl;
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-3xl $spacing-xl;
+  }
+}
+
+.credoHeader {
+  text-align: center;
+  margin-bottom: $spacing-3xl;
+}
+
+.credoTitle {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin: $spacing-lg 0 $spacing-sm;
+  line-height: $line-height-tight;
+}
+
+.credoIntro {
+  font-size: $font-size-xl;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-weight: $font-weight-medium;
+}
+
+.credoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-2xl;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.credoItem {
+  display: flex;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  background: var(--bg-secondary);
+  border-radius: $border-radius-xl;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: $gradient-accent;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateX(8px);
+    background: var(--card-hover-bg);
+
+    &::before {
+      transform: scaleY(1);
+    }
+
+    .credoNumber {
+      background: $gradient-accent;
+      color: $white;
+    }
+  }
+}
+
+.credoNumber {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-lg;
+  background: rgba(0, 83, 176, 0.1);
+  color: $primary-blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  transition: all 0.3s ease;
+}
+
+.credoText {
+  flex: 1;
+  font-size: $font-size-base;
+  color: var(--text-primary);
+  line-height: $line-height-relaxed;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

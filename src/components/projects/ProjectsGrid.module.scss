@@ -1,0 +1,524 @@
+@import '../../styles/variables';
+
+.projectsGrid {
+  padding: $spacing-5xl 0;
+  background: var(--bg-primary);
+  position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+.filtersSection {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-2xl;
+  padding: $spacing-2xl;
+  margin-bottom: $spacing-4xl;
+  animation: fadeInUp 0.6s ease-out;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl;
+  }
+}
+
+.filterTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-lg;
+}
+
+.categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-xl;
+  color: var(--text-secondary);
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(0, 83, 176, 0.4);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 83, 176, 0.1);
+  }
+
+  &.active {
+    background: $gradient-accent;
+    border-color: transparent;
+    color: $white;
+    box-shadow: 0 8px 25px rgba(255, 172, 0, 0.4);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 172, 0, 0.5);
+    }
+  }
+}
+
+.statusFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.statusButton {
+  padding: $spacing-sm $spacing-lg;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  color: var(--text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(0, 83, 176, 0.4);
+    color: var(--text-primary);
+  }
+
+  &.active {
+    background: rgba(0, 83, 176, 0.1);
+    border-color: $primary-blue;
+    color: $primary-blue;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-3xl;
+  margin-bottom: $spacing-3xl;
+  animation: fadeIn 0.6s ease-out;
+
+  @media (max-width: $breakpoint-lg) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xl;
+  }
+}
+
+.resultsInfo {
+  text-align: left;
+  flex: 1;
+}
+
+.resultsTitle {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-sm;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.resultsDescription {
+  font-size: $font-size-lg;
+  color: var(--text-secondary);
+}
+
+.projectsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-2xl;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.projectCard {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-2xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out both;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 70px rgba(0, 83, 176, 0.2);
+    border-color: rgba(0, 83, 176, 0.4);
+    z-index: 10;
+
+    .projectIcon {
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    .cardShine {
+      transform: translateX(200%);
+    }
+
+    .projectTitle {
+      background: $gradient-accent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &.green {
+    border-color: rgba(34, 197, 94, 0.3);
+
+    &:hover {
+      border-color: rgba(34, 197, 94, 0.5);
+    }
+  }
+
+  &.orange {
+    border-color: rgba(252, 63, 0, 0.3);
+
+    &:hover {
+      border-color: rgba(252, 63, 0, 0.5);
+    }
+  }
+}
+
+.projectImage {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  margin: -2px -2px 0 -2px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .projectCard:hover & img {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    height: 180px;
+  }
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+  transition: all 0.4s ease;
+
+  .projectCard:hover & {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+  }
+}
+
+.projectIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary-blue;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .projectCard.green & {
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .projectCard.orange & {
+    color: $accent-orange;
+    border-color: rgba(252, 63, 0, 0.3);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    width: 60px;
+    height: 60px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.statusBadge {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+  &.green {
+    background: rgba(34, 197, 94, 0.9);
+    color: $white;
+  }
+
+  &.blue {
+    background: rgba(0, 83, 176, 0.9);
+    color: $white;
+  }
+
+  &.orange {
+    background: rgba(252, 63, 0, 0.9);
+    color: $white;
+  }
+}
+
+.cardContent {
+  padding: $spacing-2xl;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+  line-height: $line-height-tight;
+  transition: all 0.3s ease;
+}
+
+.projectDescription {
+  font-size: $font-size-base;
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-lg;
+}
+
+.projectMeta {
+  display: flex;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+
+  svg {
+    color: $primary-blue;
+  }
+}
+
+.progressSection {
+  margin-top: auto;
+  padding-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-sm;
+}
+
+.progressLabel {
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  font-weight: $font-weight-medium;
+}
+
+.progressValue {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $primary-blue;
+}
+
+.progressBar {
+  height: 8px;
+  background: rgba(0, 83, 176, 0.1);
+  border-radius: $border-radius-full;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: $gradient-accent;
+  border-radius: $border-radius-full;
+  transition: width 0.6s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.detailsButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md $spacing-xl;
+  background: rgba(0, 83, 176, 0.1);
+  border: 2px solid $primary-blue;
+  border-radius: $border-radius-lg;
+  color: $primary-blue;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $primary-blue;
+    color: $white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 83, 176, 0.3);
+  }
+}
+
+.cardShine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-5xl $spacing-xl;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.emptyIcon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto $spacing-xl;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 83, 176, 0.1) 0%, rgba(255, 172, 0, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.emptyTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+}
+
+.emptyDescription {
+  font-size: $font-size-lg;
+  color: var(--text-secondary);
+  margin-bottom: $spacing-xl;
+}
+
+.resetButton {
+  padding: $spacing-md $spacing-2xl;
+  background: $gradient-accent;
+  border: none;
+  border-radius: $border-radius-lg;
+  color: $white;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 172, 0, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 172, 0, 0.5);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

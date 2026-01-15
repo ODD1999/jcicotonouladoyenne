@@ -1,0 +1,227 @@
+@import '../../styles/variables';
+
+.valuesSection {
+  padding: $spacing-5xl 0;
+  background: var(--bg-primary);
+  position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.title {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  color: var(--text-primary);
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.gradientText {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: $font-size-xl;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: $line-height-relaxed;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-2xl;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.valueCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-2xl;
+  padding: $spacing-3xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out both;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 172, 0, 0.05), transparent);
+    transition: left 0.6s ease;
+  }
+
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+  &:nth-child(6) { animation-delay: 0.6s; }
+
+  &:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 70px rgba(0, 83, 176, 0.15);
+    border-color: rgba(0, 83, 176, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+
+    .iconWrapper {
+      transform: scale(1.15) rotate(8deg);
+      box-shadow: 0 10px 30px rgba(0, 83, 176, 0.2);
+    }
+
+    .decorativeLine {
+      width: 100%;
+    }
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: $border-radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: $border-radius-xl;
+    padding: 2px;
+    background: linear-gradient(135deg, transparent, currentColor, transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .valueCard:hover &::after {
+    opacity: 0.5;
+    animation: rotate 2s linear infinite;
+  }
+
+  &.blue {
+    background: linear-gradient(135deg, rgba(0, 83, 176, 0.1) 0%, rgba(0, 83, 176, 0.25) 100%);
+    color: $primary-blue;
+  }
+
+  &.yellow {
+    background: linear-gradient(135deg, rgba(255, 172, 0, 0.1) 0%, rgba(255, 172, 0, 0.25) 100%);
+    color: $accent-yellow;
+  }
+
+  &.orange {
+    background: linear-gradient(135deg, rgba(252, 63, 0, 0.1) 0%, rgba(252, 63, 0, 0.25) 100%);
+    color: $accent-orange;
+  }
+}
+
+.valueTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+  line-height: $line-height-tight;
+  transition: color 0.3s ease;
+
+  .valueCard:hover & {
+    color: $primary-blue;
+  }
+}
+
+.valueDescription {
+  font-size: $font-size-base;
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  margin: 0;
+}
+
+.decorativeLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: $gradient-accent;
+  transition: width 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
