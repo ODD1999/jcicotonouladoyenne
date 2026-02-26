@@ -1,0 +1,148 @@
+@import '../../styles/variables';
+
+.adhesionPage {
+  min-height: 100vh;
+  background: $gray-50;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  
+  @media (max-width: $breakpoint-lg) {
+    flex-direction: column;
+  }
+}
+
+.leftPanel {
+  flex: 0.3;
+  background: linear-gradient(135deg, $primary-blue 0%, $primary-blue-dark 100%);
+  position: relative;
+  
+  @media (max-width: $breakpoint-lg) {
+    min-height: 40vh;
+    flex: 1;
+  }
+}
+
+.leftContent {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+  color: $white;
+  padding: $spacing-2xl;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  
+  @media (max-width: $breakpoint-lg) {
+    height: 40vh;
+    padding: $spacing-lg;
+  }
+  
+  .logosContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto $spacing-xl;
+    
+    .logo {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s ease-in-out infinite;
+      
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+      }
+      
+      &:first-child {
+        animation-delay: 0s;
+      }
+      
+      &:last-child {
+        animation-delay: 1s;
+      }
+    }
+  }
+  
+  .title {
+    font-size: $font-size-3xl;
+    font-weight: 700;
+    margin-bottom: $spacing-lg;
+    line-height: 1.2;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-xl;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  .subtitle {
+    font-size: $font-size-xl;
+    opacity: 0.9;
+    font-weight: 400;
+    margin-bottom: $spacing-lg;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-base;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-sm;
+    }
+  }
+  
+  .description {
+    font-size: $font-size-base;
+    opacity: 0.8;
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-sm;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+.rightPanel {
+  flex: 0.7;
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacing-xl $spacing-md;
+  overflow-y: auto;
+  
+  @media (max-width: $breakpoint-lg) {
+    flex: 1;
+    padding: $spacing-xl $spacing-lg;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/a-propos/page": "/a-propos",
+  "/actualites/[id]/page": "/actualites/[id]",
+  "/actualites/page": "/actualites",
+  "/api/presence/export/route": "/api/presence/export",
+  "/api/presence/route": "/api/presence",
+  "/connexion/page": "/connexion",
+  "/contact/page": "/contact",
+  "/evenements/[id]/page": "/evenements/[id]",
+  "/evenements/page": "/evenements",
+  "/evenements/presence/page": "/evenements/presence",
+  "/favicon.ico/route": "/favicon.ico",
+  "/gouvernance/page": "/gouvernance",
+  "/mandat-actuel/page": "/mandat-actuel",
+  "/mot-de-passe-oublie/page": "/mot-de-passe-oublie",
+  "/page": "/",
+  "/presence/page": "/presence",
+  "/presents/page": "/presents",
+  "/projets/[id]/page": "/projets/[id]",
+  "/projets/page": "/projets"
+}

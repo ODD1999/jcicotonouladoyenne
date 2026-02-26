@@ -1,0 +1,308 @@
+@import '../../styles/variables';
+
+.preinscriptionForm {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formContainer {
+  background: $white;
+  border-radius: 16px;
+  padding: $spacing-xl;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &.fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:not(.fadeIn) {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-xl;
+  }
+}
+
+// .formHeader {
+//   text-align: center;
+//   margin-bottom: $spacing-2xl;
+  
+//   .formTitle {
+//     font-size: $font-size-2xl;
+//     font-weight: 700;
+//     color: $gray-800;
+//     margin-bottom: $spacing-sm;
+    
+//     @media (max-width: $breakpoint-sm) {
+//       font-size: $font-size-xl;
+//     }
+//   }
+  
+//   .formSubtitle {
+//     font-size: $font-size-base;
+//     color: $gray-600;
+//     line-height: 1.6;
+//   }
+// }
+
+.form {
+  .formGroup {
+    margin-bottom: $spacing-xl;
+    
+    .label {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      color: $gray-800;
+      margin-bottom: $spacing-sm;
+      font-size: $font-size-sm;
+      
+      .icon {
+        margin-right: $spacing-xs;
+        color: $primary-blue;
+      }
+    }
+    
+    .input {
+      width: 100%;
+      padding: $spacing-md;
+      border: 2px solid $gray-200;
+      border-radius: 12px;
+      font-size: $font-size-base;
+      transition: all 0.3s ease;
+      background: $white;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-blue;
+        box-shadow: 0 0 0 3px rgba(0, 83, 176, 0.1);
+      }
+      
+      &::placeholder {
+        color: $gray-400;
+      }
+    }
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: $spacing-lg;
+    background: linear-gradient(135deg, $accent-orange 0%, $accent-yellow 100%);
+    color: $white;
+    border: none;
+    border-radius: 12px;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 172, 0, 0.3);
+    
+    &:hover:not(.disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 172, 0, 0.4);
+    }
+    
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+}
+
+.successContainer {
+  text-align: center;
+  
+  .successHeader {
+    margin-bottom: $spacing-2xl;
+    
+    .successIcon {
+      font-size: 4rem;
+      color: $accent-yellow;
+      margin-bottom: $spacing-lg;
+      animation: bounceIn 0.6s ease;
+    }
+    
+    .successTitle {
+      font-size: $font-size-3xl;
+      font-weight: 700;
+      color: $gray-800;
+      margin-bottom: $spacing-md;
+      
+      @media (max-width: $breakpoint-sm) {
+        font-size: $font-size-2xl;
+      }
+    }
+    
+    .successMessage {
+      font-size: $font-size-lg;
+      color: $gray-600;
+      line-height: 1.6;
+    }
+  }
+}
+
+.countdownContainer {
+  background: linear-gradient(135deg, $primary-blue 0%, $primary-blue-light 100%);
+  border-radius: 16px;
+  padding: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+  color: $white;
+  
+  .countdownTitle {
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    margin-bottom: $spacing-lg;
+    
+    .countdownIcon {
+      margin-right: $spacing-sm;
+    }
+  }
+  
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-md;
+    
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .countdownItem {
+      text-align: center;
+      
+      .countdownValue {
+        display: block;
+        font-size: $font-size-3xl;
+        font-weight: 700;
+        margin-bottom: $spacing-xs;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        
+        @media (max-width: $breakpoint-sm) {
+          font-size: $font-size-2xl;
+        }
+      }
+      
+      .countdownLabel {
+        font-size: $font-size-sm;
+        text-transform: uppercase;
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+.locationContainer {
+  margin-bottom: $spacing-2xl;
+  
+  .locationTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $gray-800;
+    margin-bottom: $spacing-lg;
+    
+    .locationIcon {
+      margin-right: $spacing-sm;
+      color: $primary-blue;
+    }
+  }
+  
+  .mapContainer {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    .mapImage {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .mapOverlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      padding: $spacing-xl;
+      
+      .locationInfo {
+        color: $white;
+        text-align: left;
+        
+        h4 {
+          font-size: $font-size-lg;
+          font-weight: 600;
+          margin-bottom: $spacing-sm;
+        }
+        
+        p {
+          font-size: $font-size-sm;
+          margin-bottom: $spacing-xs;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+.footerMessage {
+  text-align: center;
+  color: $gray-600;
+  
+  .smallText {
+    font-size: $font-size-sm;
+    margin-top: $spacing-md;
+    opacity: 0.8;
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,389 @@
+@import '../../styles/variables';
+
+.presentsPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: $spacing-3xl $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-2xl $spacing-md;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-xl $spacing-sm;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-3xl;
+  gap: $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.title {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-extrabold;
+  color: $primary-blue-dark;
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.titleIcon {
+  color: $accent-yellow;
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $gray-600;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-md;
+
+  @media (max-width: $breakpoint-md) {
+    justify-content: flex-end;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.refreshButton,
+.exportButton {
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  border: none;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-sm;
+  }
+}
+
+.refreshButton {
+  background: $white;
+  color: $primary-blue;
+  border: 2px solid $primary-blue;
+
+  &:hover:not(:disabled) {
+    background: $primary-blue;
+    color: $white;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.exportButton {
+  background: $gradient-accent;
+  color: $white;
+  box-shadow: 0 4px 12px rgba(255, 172, 0, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 172, 0, 0.4);
+  }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-lg;
+  margin-bottom: $spacing-3xl;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
+
+.statCard {
+  background: $white;
+  padding: $spacing-xl;
+  border-radius: $border-radius-xl;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+}
+
+.statValue {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-extrabold;
+  color: $primary-blue;
+  margin-bottom: $spacing-xs;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-3xl;
+  }
+}
+
+.statLabel {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xs;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-2xl;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  padding: $spacing-sm $spacing-lg;
+  background: $white;
+  color: $gray-700;
+  border: 2px solid $gray-300;
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $primary-blue;
+    color: $primary-blue;
+  }
+
+  &.active {
+    background: $primary-blue;
+    color: $white;
+    border-color: $primary-blue;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-xs;
+  }
+}
+
+.loading,
+.empty {
+  text-align: center;
+  padding: $spacing-4xl;
+  color: $gray-500;
+
+  svg {
+    margin-bottom: $spacing-lg;
+    color: $gray-400;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    margin: 0;
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  font-size: $font-size-4xl;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
+
+.presenceCard {
+  background: $white;
+  border-radius: $border-radius-xl;
+  padding: $spacing-xl;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 2px solid $gray-100;
+}
+
+.cardIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: $gradient-accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  font-size: $font-size-xl;
+  flex-shrink: 0;
+
+  @media (max-width: $breakpoint-sm) {
+    width: 40px;
+    height: 40px;
+    font-size: $font-size-lg;
+  }
+}
+
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $primary-blue-dark;
+  margin: 0 0 $spacing-xs 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+  }
+}
+
+.cardType {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.member {
+    background: rgba(0, 83, 176, 0.1);
+    color: $primary-blue;
+  }
+
+  &.ol {
+    background: rgba(255, 172, 0, 0.1);
+    color: $accent-yellow;
+  }
+
+  &.guest {
+    background: rgba(108, 117, 125, 0.1);
+    color: $gray-700;
+  }
+}
+
+.cardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $gray-700;
+
+  svg {
+    color: $primary-blue;
+    flex-shrink: 0;
+  }
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xs;
+  }
+}
+
+.timestamp {
+  font-size: $font-size-xs;
+  color: $gray-500;
+  margin-top: $spacing-xs;
+  font-style: italic;
+}

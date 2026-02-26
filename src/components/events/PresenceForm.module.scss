@@ -1,0 +1,718 @@
+@import '../../styles/variables';
+
+.formContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md;
+  }
+}
+
+.formCard {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: $border-radius-2xl;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: $spacing-3xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: $gradient-accent;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-2xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+    border-radius: $border-radius-xl;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.stepContent {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: $breakpoint-sm) {
+    min-height: 350px;
+  }
+}
+
+// Welcome Step
+.welcomeHeader {
+  text-align: center;
+  margin-bottom: $spacing-3xl;
+}
+
+.logosContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto $spacing-xl;
+
+  @media (max-width: $breakpoint-sm) {
+    max-width: 300px;
+    padding: 0 $spacing-md;
+  }
+}
+
+.logoCircle {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logoPulse 3s ease-in-out infinite;
+
+  &:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.eventTitle {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-extrabold;
+  color: $primary-blue-dark;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.highlight {
+  background: $gradient-accent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.yearBadge {
+  display: inline-block;
+  padding: $spacing-sm $spacing-xl;
+  background: rgba(0, 83, 176, 0.1);
+  border: 2px solid $primary-blue;
+  border-radius: $border-radius-full;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $primary-blue;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-lg;
+    padding: $spacing-xs $spacing-lg;
+  }
+}
+
+.welcomeText {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $primary-blue;
+  margin-bottom: $spacing-md;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xl;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $gray-700;
+  line-height: $line-height-relaxed;
+  max-width: 500px;
+  margin: 0 auto;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+  }
+}
+
+// Step Title & Description
+.stepTitle {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $primary-blue-dark;
+  margin-bottom: $spacing-md;
+  text-align: center;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xl;
+  }
+}
+
+.stepDescription {
+  font-size: $font-size-base;
+  color: $gray-600;
+  text-align: center;
+  // margin-bottom: $spacing-2xl;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// Type Selection Cards
+.typeCards {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.typeCard {
+  background: $white;
+  border: 2px solid $gray-200;
+  border-radius: $border-radius-xl;
+  padding: $spacing-xl;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-lg;
+
+  &:hover {
+    border-color: $primary-blue;
+    background: rgba(0, 83, 176, 0.03);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 83, 176, 0.15);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $primary-blue-dark;
+    margin: 0 0 $spacing-xs 0;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    margin: 0;
+    line-height: $line-height-relaxed;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+    gap: $spacing-md;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h3 {
+      font-size: $font-size-base;
+    }
+
+    p {
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+.typeIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: $border-radius-lg;
+  background: $gradient-accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+
+  .typeCard:hover & {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 50px;
+    height: 50px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+// Search Box
+.searchBox {
+  margin-bottom: $spacing-xl;
+}
+
+.searchInput {
+  width: 100%;
+  padding: $spacing-lg;
+  font-size: $font-size-lg;
+  border: 2px solid $gray-300;
+  border-radius: $border-radius-lg;
+  transition: all 0.3s ease;
+  background: $white;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 4px rgba(0, 83, 176, 0.1);
+  }
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md;
+    font-size: $font-size-base;
+  }
+}
+
+// Members List
+.membersList {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  margin-bottom: $spacing-xl;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius-lg;
+  background: $gray-50;
+
+  @media (max-width: $breakpoint-sm) {
+    max-height: 300px;
+  }
+}
+
+.memberItem {
+  width: 100%;
+  padding: $spacing-lg;
+  background: $white;
+  border: none;
+  border-bottom: 1px solid $gray-200;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-base;
+  color: $gray-800;
+
+  &:hover {
+    background: rgba(0, 83, 176, 0.05);
+    padding-left: $spacing-xl;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md;
+    font-size: $font-size-sm;
+
+    &:hover {
+      padding-left: $spacing-lg;
+    }
+  }
+}
+
+.checkIcon {
+  color: $primary-blue;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  .memberItem:hover & {
+    opacity: 1;
+  }
+}
+
+.noResults {
+  padding: $spacing-2xl;
+  text-align: center;
+  color: $gray-500;
+  font-size: $font-size-base;
+}
+
+// OL List
+.olList {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-md;
+  background: $gray-50;
+
+  @media (max-width: $breakpoint-sm) {
+    max-height: 150px;
+  }
+}
+
+.olItem {
+  width: 100%;
+  padding: $spacing-md;
+  background: $white;
+  border: none;
+  border-bottom: 1px solid $gray-200;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-sm;
+  color: $gray-800;
+
+  &:hover {
+    background: rgba(0, 83, 176, 0.05);
+  }
+
+  &.selected {
+    background: rgba(0, 83, 176, 0.1);
+    color: $primary-blue;
+    font-weight: $font-weight-semibold;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-sm;
+    font-size: $font-size-xs;
+  }
+}
+
+.selectedOL {
+  padding: $spacing-md;
+  background: rgba(0, 83, 176, 0.1);
+  border-radius: $border-radius-lg;
+  color: $primary-blue;
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-lg;
+
+  strong {
+    font-weight: $font-weight-bold;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xs;
+    padding: $spacing-sm;
+  }
+}
+
+// Form Elements
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $gray-700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    gap: $spacing-xs;
+
+    label {
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: $spacing-md;
+  font-size: $font-size-base;
+  border: 2px solid $gray-300;
+  border-radius: $border-radius-lg;
+  transition: all 0.3s ease;
+  background: $white;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 4px rgba(0, 83, 176, 0.1);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-sm;
+    font-size: $font-size-sm;
+  }
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23495057' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $spacing-md center;
+  padding-right: $spacing-2xl;
+}
+
+// Buttons
+.primaryButton {
+  width: 100%;
+  padding: $spacing-lg $spacing-2xl;
+  background: $gradient-accent;
+  color: $white;
+  border: none;
+  border-radius: $border-radius-xl;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(255, 172, 0, 0.3);
+  margin-top: auto;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 172, 0, 0.4);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
+  }
+}
+
+.backButton {
+  width: 100%;
+  padding: $spacing-md;
+  background: transparent;
+  color: $gray-600;
+  border: 2px solid $gray-300;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: $spacing-lg;
+
+  &:hover {
+    border-color: $gray-400;
+    color: $gray-800;
+    background: $gray-50;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-sm;
+    font-size: $font-size-sm;
+  }
+}
+
+.resetButton {
+  margin-top: $spacing-xl;
+  padding: $spacing-sm $spacing-lg;
+  background: transparent;
+  color: $gray-500;
+  border: 1px solid $gray-300;
+  border-radius: $border-radius-lg;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $primary-blue;
+    border-color: $primary-blue;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xs;
+    padding: $spacing-xs $spacing-md;
+  }
+}
+
+// Thank You Step
+.thankYouContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: $spacing-2xl 0;
+}
+
+.successIcon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: $gradient-accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  margin-bottom: $spacing-2xl;
+  animation: successPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 15px 40px rgba(255, 172, 0, 0.4);
+
+  @media (max-width: $breakpoint-sm) {
+    width: 100px;
+    height: 100px;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
+
+@keyframes successPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.thankYouTitle {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-extrabold;
+  color: $primary-blue-dark;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.thankYouText {
+  font-size: $font-size-lg;
+  color: $gray-700;
+  line-height: $line-height-relaxed;
+  max-width: 500px;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+  }
+}
+
+.thankYouSubtext {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $primary-blue;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-lg;
+  }
+}

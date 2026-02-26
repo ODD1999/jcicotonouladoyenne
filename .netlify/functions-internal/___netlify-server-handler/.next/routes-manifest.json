@@ -1,0 +1,177 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/actualites/[id]",
+      "regex": "^/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/actualites/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/evenements/[id]",
+      "regex": "^/evenements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/evenements/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/projets/[id]",
+      "regex": "^/projets/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/projets/(?<nxtPid>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/a-propos",
+      "regex": "^/a\\-propos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/a\\-propos(?:/)?$"
+    },
+    {
+      "page": "/actualites",
+      "regex": "^/actualites(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/actualites(?:/)?$"
+    },
+    {
+      "page": "/api/presence",
+      "regex": "^/api/presence(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/presence(?:/)?$"
+    },
+    {
+      "page": "/api/presence/export",
+      "regex": "^/api/presence/export(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/presence/export(?:/)?$"
+    },
+    {
+      "page": "/connexion",
+      "regex": "^/connexion(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/connexion(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/evenements",
+      "regex": "^/evenements(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/evenements(?:/)?$"
+    },
+    {
+      "page": "/evenements/presence",
+      "regex": "^/evenements/presence(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/evenements/presence(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/gouvernance",
+      "regex": "^/gouvernance(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/gouvernance(?:/)?$"
+    },
+    {
+      "page": "/mandat-actuel",
+      "regex": "^/mandat\\-actuel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/mandat\\-actuel(?:/)?$"
+    },
+    {
+      "page": "/mot-de-passe-oublie",
+      "regex": "^/mot\\-de\\-passe\\-oublie(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/mot\\-de\\-passe\\-oublie(?:/)?$"
+    },
+    {
+      "page": "/presence",
+      "regex": "^/presence(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/presence(?:/)?$"
+    },
+    {
+      "page": "/presents",
+      "regex": "^/presents(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/presents(?:/)?$"
+    },
+    {
+      "page": "/projets",
+      "regex": "^/projets(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/projets(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

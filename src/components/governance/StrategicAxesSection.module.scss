@@ -88,6 +88,7 @@
   @media (max-width: $breakpoint-md) {
     height: auto;
     min-height: 350px;
+    perspective: none;
   }
 }
 
@@ -104,6 +105,17 @@
   padding: $spacing-3xl;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: $breakpoint-md) {
+    position: relative;
+    height: auto;
+    min-height: auto;
+    padding: $spacing-2xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
 }
 
 .cardFront {
@@ -112,6 +124,14 @@
 
   .axisCard:hover & {
     transform: rotateY(180deg);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    transform: none;
+    
+    .axisCard:hover & {
+      transform: none;
+    }
   }
 }
 
@@ -122,6 +142,10 @@
 
   .axisCard:hover & {
     transform: rotateY(0deg);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
   }
 }
 
@@ -135,6 +159,17 @@
   margin-bottom: $spacing-xl;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    width: 70px;
+    height: 70px;
+    margin-bottom: $spacing-lg;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
 
   &::after {
     content: '';
@@ -178,6 +213,14 @@
   color: var(--text-primary);
   margin-bottom: $spacing-md;
   line-height: $line-height-tight;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-lg;
+  }
 }
 
 .axisDescription {
@@ -185,6 +228,10 @@
   color: var(--text-secondary);
   line-height: $line-height-relaxed;
   flex: 1;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-sm;
+  }
 }
 
 .hoverIndicator {
@@ -201,6 +248,10 @@
 
   .axisCard:hover & {
     opacity: 1;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
   }
 }
 

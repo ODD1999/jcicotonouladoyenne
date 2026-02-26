@@ -115,7 +115,7 @@ export default function Footer() {
                 </li>
                 <li className={styles.contactItem}>
                   <FiMail size={16} />
-                  <span>contact@jcicotonou.org</span>
+                  <span>contact@jci-cld.org</span>
                 </li>
                 <li className={styles.contactItem}>
                   <FiPhone size={16} />

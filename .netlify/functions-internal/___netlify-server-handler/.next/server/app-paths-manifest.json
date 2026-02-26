@@ -1,0 +1,23 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/a-propos/page": "app/a-propos/page.js",
+  "/actualites/[id]/page": "app/actualites/[id]/page.js",
+  "/actualites/page": "app/actualites/page.js",
+  "/api/presence/export/route": "app/api/presence/export/route.js",
+  "/api/presence/route": "app/api/presence/route.js",
+  "/connexion/page": "app/connexion/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/evenements/[id]/page": "app/evenements/[id]/page.js",
+  "/evenements/page": "app/evenements/page.js",
+  "/evenements/presence/page": "app/evenements/presence/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/gouvernance/page": "app/gouvernance/page.js",
+  "/mandat-actuel/page": "app/mandat-actuel/page.js",
+  "/mot-de-passe-oublie/page": "app/mot-de-passe-oublie/page.js",
+  "/page": "app/page.js",
+  "/presence/page": "app/presence/page.js",
+  "/presents/page": "app/presents/page.js",
+  "/projets/[id]/page": "app/projets/[id]/page.js",
+  "/projets/page": "app/projets/page.js"
+}

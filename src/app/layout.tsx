@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ClientProviders from "@/components/providers/ClientProviders";
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
+import LayoutContent from "@/components/layout/LayoutContent";
 import "../styles/globals.scss";
 
 const inter = Inter({
@@ -26,9 +25,7 @@ export default function RootLayout({
     <html lang="fr" data-theme="light">
       <body className={inter.variable}>
         <ClientProviders>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <LayoutContent>{children}</LayoutContent>
         </ClientProviders>
       </body>
     </html>

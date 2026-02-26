@@ -1,0 +1,38 @@
+// JCI Cotonou la Doyenne - Word Counter Styles
+
+@import '../../styles/variables';
+
+.wordCounter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $gray-500;
+  
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-xs;
+  }
+  
+  .wordCount {
+    font-weight: 600;
+    color: $primary-blue;
+    
+    &.warning {
+      color: $accent-orange;
+    }
+    
+    &.danger {
+      color: $accent-red;
+    }
+  }
+  
+  .wordSeparator {
+    color: $gray-400;
+  }
+  
+  .wordMax {
+    color: $gray-400;
+  }
+}

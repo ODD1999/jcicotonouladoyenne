@@ -71,6 +71,15 @@
     gap: $spacing-3xl;
     padding: 0 $spacing-lg;
   }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-md;
+    gap: $spacing-2xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0 $spacing-sm;
+  }
 }
 
 .mainContent {
@@ -78,6 +87,10 @@
   flex-direction: column;
   gap: $spacing-xl;
   animation: slideInLeft 0.8s ease-out;
+
+  @media (max-width: $breakpoint-md) {
+    gap: $spacing-lg;
+  }
 }
 
 .badge {
@@ -95,6 +108,11 @@
   width: fit-content;
   text-transform: uppercase;
   letter-spacing: 1px;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-xs;
+  }
 }
 
 .badgeDot {
@@ -121,6 +139,10 @@
   @media (max-width: $breakpoint-md) {
     font-size: $font-size-4xl;
   }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-3xl;
+  }
 }
 
 .gradientText {
@@ -143,6 +165,10 @@
   @media (max-width: $breakpoint-md) {
     font-size: $font-size-lg;
   }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+  }
 }
 
 .features {
@@ -150,6 +176,11 @@
   flex-direction: column;
   gap: $spacing-lg;
   margin: $spacing-lg 0;
+
+  @media (max-width: $breakpoint-md) {
+    gap: $spacing-md;
+    margin: $spacing-md 0;
+  }
 }
 
 .feature {
@@ -167,11 +198,24 @@
     background: rgba(255, 255, 255, 0.15);
     transform: translateX(10px);
   }
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-md;
+    gap: $spacing-md;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-sm $spacing-md;
+  }
 }
 
 .featureIcon {
   font-size: $font-size-4xl;
   flex-shrink: 0;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-3xl;
+  }
 }
 
 .featureText {
@@ -182,6 +226,10 @@
     font-weight: $font-weight-bold;
     color: $white;
     margin: 0 0 $spacing-xs 0;
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-base;
+    }
   }
 
   p {
@@ -189,6 +237,10 @@
     color: rgba(255, 255, 255, 0.85);
     margin: 0;
     line-height: $line-height-relaxed;
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-sm;
+    }
   }
 }
 
@@ -234,6 +286,8 @@
 
   @media (max-width: $breakpoint-sm) {
     justify-content: center;
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
   }
 }
 
@@ -261,6 +315,8 @@
 
   @media (max-width: $breakpoint-sm) {
     justify-content: center;
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
   }
 }
 
@@ -276,6 +332,14 @@
   @media (max-width: $breakpoint-lg) {
     animation: fadeIn 0.8s ease-out;
   }
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-2xl;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
 }
 
 .cardTitle {
@@ -284,18 +348,35 @@
   color: $white;
   margin: 0 0 $spacing-2xl 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+    margin: 0 0 $spacing-xl 0;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xl;
+  }
 }
 
 .contactInfo {
   display: flex;
   flex-direction: column;
   gap: $spacing-xl;
+
+  @media (max-width: $breakpoint-md) {
+    gap: $spacing-lg;
+  }
 }
 
 .contactItem {
   display: flex;
   align-items: flex-start;
   gap: $spacing-lg;
+
+  @media (max-width: $breakpoint-sm) {
+    gap: $spacing-md;
+  }
 }
 
 .contactIcon {
@@ -313,6 +394,16 @@
   .contactItem:hover & {
     background: rgba(255, 255, 255, 0.25);
     transform: scale(1.1);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
 
@@ -335,6 +426,11 @@
   font-size: $font-size-lg;
   color: $white;
   font-weight: $font-weight-semibold;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-base;
+    word-break: break-word;
+  }
 }
 
 .decorativeShapes {

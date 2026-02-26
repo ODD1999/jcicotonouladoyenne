@@ -1,0 +1,374 @@
+// JCI Cotonou la Doyenne - Adherents Page Styles
+
+@import '../../styles/variables';
+
+.adherentsPage {
+  min-height: 100vh;
+  background: $off-white;
+  padding: $spacing-2xl;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .header {
+    margin-bottom: $spacing-2xl;
+    
+    .title {
+      font-size: $font-size-3xl;
+      font-weight: 700;
+      color: $gray-900;
+      margin-bottom: $spacing-xl;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $spacing-lg;
+      
+      .statCard {
+        background: $white;
+        padding: $spacing-lg;
+        border-radius: 12px;
+        box-shadow: $light-shadow;
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        
+        .statIcon {
+          font-size: $font-size-2xl;
+          color: $primary-blue;
+        }
+        
+        .statNumber {
+          font-size: $font-size-2xl;
+          font-weight: 700;
+          color: $gray-900;
+          margin: 0;
+        }
+        
+        .statLabel {
+          font-size: $font-size-sm;
+          color: $gray-500;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-xl;
+    gap: $spacing-lg;
+    
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .searchBox {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+      
+      @media (max-width: $breakpoint-md) {
+        max-width: 100%;
+      }
+      
+      .searchIcon {
+        position: absolute;
+        left: $spacing-md;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $gray-400;
+        font-size: $font-size-lg;
+      }
+      
+      .searchInput {
+        width: 100%;
+        padding: $spacing-md $spacing-md $spacing-md $spacing-3xl;
+        border: 2px solid $light-border;
+        border-radius: 8px;
+        font-size: $font-size-base;
+        transition: all $transition-fast;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-blue;
+          box-shadow: 0 0 0 3px rgba(0, 83, 176, 0.1);
+        }
+      }
+    }
+    
+    .exportButton {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      padding: $spacing-md $spacing-lg;
+      background: $primary-blue;
+      color: $white;
+      border: none;
+      border-radius: 8px;
+      font-size: $font-size-base;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all $transition-fast;
+      
+      &:hover {
+        background: $primary-blue-dark;
+        transform: translateY(-1px);
+      }
+      
+      svg {
+        font-size: $font-size-lg;
+      }
+    }
+  }
+
+  .tableContainer {
+    background: $white;
+    border-radius: 12px;
+    box-shadow: $light-shadow;
+    overflow: hidden;
+    
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      
+      thead {
+        background: $gray-50;
+        
+        th {
+          padding: $spacing-lg;
+          text-align: left;
+          font-weight: 600;
+          color: $gray-700;
+          font-size: $font-size-sm;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          border-bottom: 2px solid $light-border;
+        }
+      }
+      
+      tbody {
+        tr {
+          &:hover {
+            background: $gray-50;
+          }
+          
+          td {
+            padding: $spacing-lg;
+            border-bottom: 1px solid $light-border;
+            color: $gray-700;
+            font-size: $font-size-sm;
+          }
+        }
+      }
+    }
+    
+    .viewButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: $spacing-sm;
+      background: $primary-blue;
+      color: $white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all $transition-fast;
+      
+      &:hover {
+        background: $primary-blue-dark;
+        transform: scale(1.05);
+      }
+      
+      svg {
+        font-size: $font-size-base;
+      }
+    }
+    
+    .noResults {
+      text-align: center;
+      padding: $spacing-3xl;
+      color: $gray-500;
+      
+      .noResultsIcon {
+        font-size: $font-size-4xl;
+        margin-bottom: $spacing-lg;
+        opacity: 0.5;
+      }
+      
+      p {
+        font-size: $font-size-lg;
+        margin: 0;
+      }
+    }
+  }
+
+  .loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    color: $gray-500;
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid $light-border;
+      border-top: 4px solid $primary-blue;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: $spacing-lg;
+    }
+    
+    p {
+      font-size: $font-size-lg;
+      margin: 0;
+    }
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: $spacing-lg;
+    
+    .modalContent {
+      background: $white;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      
+      .modalHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $spacing-xl;
+        border-bottom: 1px solid $light-border;
+        
+        h2 {
+          margin: 0;
+          font-size: $font-size-2xl;
+          color: $gray-900;
+        }
+        
+        .closeButton {
+          background: none;
+          border: none;
+          font-size: $font-size-2xl;
+          color: $gray-500;
+          cursor: pointer;
+          padding: 0;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transition: all $transition-fast;
+          
+          &:hover {
+            background: $gray-100;
+            color: $gray-700;
+          }
+        }
+      }
+      
+      .modalBody {
+        padding: $spacing-xl;
+        
+        .section {
+          margin-bottom: $spacing-xl;
+          
+          h3 {
+            font-size: $font-size-xl;
+            font-weight: 600;
+            color: $primary-blue;
+            margin-bottom: $spacing-lg;
+            padding-bottom: $spacing-sm;
+            border-bottom: 2px solid $primary-blue;
+          }
+          
+          .infoGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: $spacing-lg;
+            
+            .infoItem {
+              display: flex;
+              align-items: flex-start;
+              gap: $spacing-md;
+              
+              .infoIcon {
+                color: $primary-blue;
+                font-size: $font-size-lg;
+                margin-top: 2px;
+                flex-shrink: 0;
+              }
+              
+              .infoLabel {
+                font-size: $font-size-sm;
+                color: $gray-500;
+                margin: 0 0 $spacing-xs 0;
+                font-weight: 600;
+              }
+              
+              .infoValue {
+                font-size: $font-size-base;
+                color: $gray-900;
+                margin: 0;
+                line-height: 1.4;
+              }
+            }
+          }
+          
+          .formationsList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: $spacing-md;
+            
+            .formationItem {
+              background: $gray-50;
+              padding: $spacing-lg;
+              border-radius: 8px;
+              border-left: 4px solid $primary-blue;
+              
+              p {
+                margin: 0 0 $spacing-xs 0;
+                font-size: $font-size-sm;
+                
+                &:last-child {
+                  margin-bottom: 0;
+                }
+                
+                strong {
+                  color: $primary-blue;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -29,7 +29,7 @@ export default function ProjectSlider() {
       description: 'Projet de construction et d\'aménagement d\'un fab lab dans une zone rural',
       category: 'Education',
       impact: '200+ Bénéficiaires',
-      image: '/hero/fablab.jpg',
+      image: '/hero/hero1.jpg',
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ export default function ProjectSlider() {
       description: 'Intégration des jeunes dans la société pour leur développement social et économique.',
       category: 'Environnement',
       impact: '5000+ Enfants touchés',
-      image: '/hero/citoyen.jpg',
+      image: '/hero/hero2.jpg',
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ export default function ProjectSlider() {
       description: 'Initiative de sensibilisation et de lutte contre les cancers.',
       category: 'Santé',
       impact: '50+ Entreprises créées',
-      image: '/hero/tucc.jpg',
+      image: '/hero/hero3.jpg',
     },
     {
       id: 4,
@@ -53,7 +53,7 @@ export default function ProjectSlider() {
       description: 'Programme de développement des compétences en leadership pour 200 jeunes entrepreneurs de la région.',
       category: 'Entrepreneuriat',
       impact: '1000+ Consultations',
-      image: '/hero/hero1.jpg',
+      image: '/hero/hero4.jpg',
     },
   ];
 

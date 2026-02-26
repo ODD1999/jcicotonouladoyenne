@@ -1,0 +1,773 @@
+@import '../../styles/variables';
+
+.adhesionForm {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.progressBar {
+  margin-bottom: $spacing-2xl;
+  
+  .progressHeader {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    
+    .progressTitle {
+      font-size: $font-size-2xl;
+      font-weight: 700;
+      color: $gray-800;
+      margin-bottom: $spacing-xs;
+      
+      @media (max-width: $breakpoint-sm) {
+        font-size: $font-size-xl;
+      }
+    }
+    
+    .progressSubtitle {
+      font-size: $font-size-base;
+      color: $gray-600;
+      margin: 0;
+    }
+  }
+  
+  .progressSteps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: $spacing-xl;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: $gray-200;
+      z-index: 0;
+    }
+    
+    .progressStep {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      
+      .progressDot {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: $white;
+        border: 2px solid $gray-300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: $gray-500;
+        margin-bottom: $spacing-sm;
+        transition: all 0.3s ease;
+        
+        @media (max-width: $breakpoint-sm) {
+          width: 32px;
+          height: 32px;
+          font-size: $font-size-sm;
+        }
+      }
+      
+      .progressLabel {
+        font-size: $font-size-xs;
+        color: $gray-600;
+        text-align: center;
+        max-width: 100px;
+        line-height: 1.2;
+        
+        @media (max-width: $breakpoint-md) {
+          font-size: 10px;
+          max-width: 80px;
+        }
+      }
+      
+      &.active {
+        .progressDot {
+          border-color: $primary-blue;
+          color: $white;
+          background: $primary-blue;
+        }
+        
+        .progressLabel {
+          color: $primary-blue;
+          font-weight: 600;
+        }
+      }
+      
+      &.completed {
+        .progressDot {
+          border-color: $accent-yellow;
+          color: $white;
+          background: $accent-yellow;
+        }
+        
+        .progressLabel {
+          color: $gray-700;
+        }
+      }
+    }
+  }
+}
+
+.formContainer {
+  background: $white;
+  border-radius: 16px;
+  padding: $spacing-2xl;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: $spacing-xl;
+  
+  &.fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:not(.fadeIn) {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-xl;
+  }
+}
+
+.step {
+  .stepTitle {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $gray-800;
+    margin-bottom: $spacing-xl;
+    text-align: center;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-lg;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-base;
+    }
+  }
+  
+  p {
+    color: $black !important;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-sm;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-lg;
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+  
+  .fullWidth {
+    grid-column: 1 / -1;
+  }
+}
+
+.formGroup {
+  margin-bottom: $spacing-sm;
+  
+  .label {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: $gray-700;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-sm;
+
+    svg {
+      margin-right: $spacing-sm;
+    }
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-xs;
+    }
+  }
+  
+  .input {
+    width: 100%;
+    padding: $spacing-md;
+    border: 2px solid $light-border;
+    border-radius: 8px;
+    font-size: $font-size-base;
+    transition: all $transition-fast;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-sm;
+      padding: $spacing-sm;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-blue;
+      box-shadow: 0 0 0 3px rgba(0, 83, 176, 0.1);
+    }
+    
+    &::placeholder {
+      color: $gray-400;
+    }
+  }
+  
+  .fileInput {
+    width: 100%;
+    padding: $spacing-md;
+    border: 2px dashed $gray-300;
+    border-radius: 8px;
+    background: $gray-50;
+    cursor: pointer;
+    
+    &:hover {
+      border-color: $primary-blue;
+      background: rgba(0, 83, 176, 0.05);
+    }
+  }
+  
+  .fileInfo {
+    margin-top: $spacing-sm;
+    font-size: $font-size-sm;
+    color: $gray-600;
+  }
+}
+
+.fileUploadGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+  
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
+
+.questionBlock {
+  margin-bottom: $spacing-xl;
+  padding: $spacing-lg;
+  background: $gray-50;
+  border-radius: 12px;
+  border: 1px solid $gray-200;
+  
+  @media (max-width: $breakpoint-lg) {
+    padding: $spacing-md;
+  }
+  
+  .questionTitle {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $gray-800;
+    margin-bottom: $spacing-lg;
+    line-height: 1.4;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-base;
+      margin-bottom: $spacing-md;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+.radioGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  
+  @media (max-width: $breakpoint-sm) {
+    gap: $spacing-md;
+  }
+  
+  .radioLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: $spacing-md $spacing-lg;
+    background: $white;
+    border: 2px solid $gray-200;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    
+    &:hover {
+      border-color: $primary-blue;
+      background: rgba(0, 83, 176, 0.05);
+    }
+    
+    input[type="radio"] {
+      margin-right: $spacing-sm;
+      
+      &:checked + .radioText {
+        color: $primary-blue;
+        font-weight: 600;
+      }
+    }
+    
+    .radioText {
+      font-size: $font-size-base;
+      color: $gray-700;
+      
+      @media (max-width: $breakpoint-lg) {
+        font-size: $font-size-sm;
+      }
+      
+      @media (max-width: $breakpoint-sm) {
+        font-size: $font-size-xs;
+      }
+    }
+  }
+}
+
+.checkboxGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+  
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: $spacing-md;
+    background: $white;
+    border: 2px solid $gray-200;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: $primary-blue;
+      background: rgba(0, 83, 176, 0.05);
+    }
+    
+    input[type="checkbox"] {
+      margin-right: $spacing-sm;
+      
+      &:checked + .checkboxText {
+        color: $primary-blue;
+        font-weight: 600;
+      }
+    }
+    
+    .checkboxText {
+      font-size: $font-size-base;
+      color: $gray-700;
+      
+      @media (max-width: $breakpoint-lg) {
+        font-size: $font-size-sm;
+      }
+      
+      @media (max-width: $breakpoint-sm) {
+        font-size: $font-size-xs;
+      }
+    }
+  }
+}
+
+.textarea {
+  width: 100%;
+  padding: $spacing-md;
+  border: 2px solid $gray-200;
+  border-radius: 8px;
+  font-size: $font-size-base;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+  transition: all $transition-fast;
+  
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-sm;
+    padding: $spacing-sm;
+    min-height: 80px;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 3px rgba(0, 83, 176, 0.1);
+  }
+  
+  &::placeholder {
+    color: $gray-400;
+  }
+}
+
+.wordCounter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $gray-500;
+  
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-xs;
+  }
+  
+  .wordCount {
+    font-weight: 600;
+    color: $primary-blue;
+    
+    &.warning {
+      color: $accent-orange;
+    }
+    
+    &.danger {
+      color: $accent-orange;
+    }
+  }
+  
+  .wordSeparator {
+    color: $gray-400;
+  }
+  
+  .wordMax {
+    color: $gray-400;
+  }
+}
+
+.formationsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  
+  .formationRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: $spacing-lg;
+    align-items: end;
+    
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+    
+    .formationField {
+      .label {
+        display: block;
+        font-weight: 600;
+        color: $gray-800;
+        margin-bottom: $spacing-sm;
+        font-size: $font-size-sm;
+      }
+      
+      .input {
+        width: 100%;
+        padding: $spacing-md;
+        border: 2px solid $gray-200;
+        border-radius: 8px;
+        font-size: $font-size-base;
+        transition: all 0.3s ease;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-blue;
+          box-shadow: 0 0 0 3px rgba(0, 83, 176, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.noteBlock {
+  margin-top: $spacing-xl;
+  padding: $spacing-lg;
+  background: rgba(0, 83, 176, 0.05);
+  border: 2px solid rgba(0, 83, 176, 0.2);
+  border-radius: 12px;
+  
+  .noteHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    
+    .noteIcon {
+      color: $primary-blue;
+      margin-right: $spacing-sm;
+      font-size: $font-size-lg;
+    }
+    
+    h4 {
+      font-size: $font-size-lg;
+      font-weight: 600;
+      color: $primary-blue;
+      margin: 0;
+    }
+  }
+  
+  .noteText {
+    font-size: $font-size-sm;
+    color: $gray-700;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.successStep {
+  text-align: center;
+  padding: $spacing-3xl;
+  
+  .successContent {
+    .successIcon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, $accent-yellow 0%, #22c55e 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto $spacing-xl;
+      color: $white;
+      font-size: $font-size-3xl;
+      animation: successPulse 2s ease-in-out infinite;
+    }
+    
+    .successTitle {
+      font-size: $font-size-2xl;
+      font-weight: 700;
+      color: $gray-800;
+      margin-bottom: $spacing-lg;
+    }
+    
+    .successMessage {
+      font-size: $font-size-lg;
+      color: $gray-600;
+      line-height: 1.6;
+      margin-bottom: $spacing-xl;
+    }
+    
+    .successSummary {
+      background: $gray-50;
+      border-radius: 12px;
+      padding: $spacing-lg;
+      text-align: left;
+      
+      h4 {
+        font-size: $font-size-lg;
+        font-weight: 600;
+        color: $gray-800;
+        margin-bottom: $spacing-md;
+      }
+      
+      p {
+        font-size: $font-size-base;
+        color: $gray-600;
+        margin-bottom: $spacing-sm;
+        
+        strong {
+          color: $gray-800;
+        }
+      }
+    }
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+  
+  .navButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-md $spacing-xl;
+    border: none;
+    border-radius: 12px;
+    font-size: $font-size-base;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      
+      &:hover {
+        transform: none;
+      }
+    }
+    
+    svg {
+      margin: 0 $spacing-sm;
+    }
+  }
+  
+  .prevButton {
+    background: $gray-100;
+    color: $gray-600;
+    
+    &:hover:not(.disabled) {
+      background: $gray-200;
+      color: $gray-700;
+    }
+    
+    svg {
+      margin-right: $spacing-sm;
+      margin-left: 0;
+    }
+  }
+  
+  .nextButton {
+    background: linear-gradient(135deg, $primary-blue 0%, $primary-blue-dark 100%);
+    color: $white;
+    
+    &:hover:not(.disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 83, 176, 0.3);
+    }
+    
+    svg {
+      margin-left: $spacing-sm;
+      margin-right: 0;
+    }
+  }
+  
+  .submitButton {
+    background: $primary-blue;
+    color: $white;
+    
+    &:hover:not(.disabled) {
+      background: $primary-blue-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 83, 176, 0.3);
+    }
+    
+    svg {
+      margin-left: $spacing-sm;
+      margin-right: 0;
+    }
+  }
+}
+
+.infoBlock {
+  margin-bottom: $spacing-lg;
+  padding: $spacing-lg;
+  background: rgba(0, 83, 176, 0.05);
+  border: 2px solid rgba(0, 83, 176, 0.2);
+  border-radius: 12px;
+  
+  .infoHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    
+    .infoIcon {
+      color: $primary-blue;
+      margin-right: $spacing-sm;
+      font-size: $font-size-lg;
+    }
+    
+    .infoTitle {
+      font-size: $font-size-lg;
+      font-weight: 600;
+      color: $primary-blue;
+      margin: 0;
+    }
+  }
+  
+  .infoContent {
+    font-size: $font-size-sm;
+    color: $gray-700;
+    line-height: 1.6;
+    
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.addButton, .removeButton {
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: 8px;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: $spacing-sm;
+}
+
+.addButton {
+  background: $primary-blue;
+  color: $white;
+  
+  &:hover {
+    background: $primary-blue-dark;
+    transform: translateY(-1px);
+  }
+}
+
+.removeButton {
+  background: $accent-orange;
+  color: $white;
+  
+  &:hover {
+    background: $accent-orange-dark;
+    transform: translateY(-1px);
+  }
+}
+
+.removeIconButton {
+  background: $accent-orange;
+  color: $white;
+  border: none;
+  border-radius: 8px;
+  padding: $spacing-sm;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  margin-top: $spacing-lg;
+  
+  &:hover {
+    background: $accent-orange-dark;
+    transform: translateY(-1px);
+  }
+  
+  svg {
+    font-size: $font-size-base;
+  }
+}
+
+@keyframes successPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
