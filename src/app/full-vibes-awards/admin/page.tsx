@@ -69,7 +69,7 @@ export default function AwardsAdmin(){
    <a className={`${styles.primary} ${styles.recipeLink}`} href="/full-vibes-awards?recette=1" target="_blank" rel="noopener noreferrer">Ouvrir le vote de recette en ligne →</a>
    {data.categories.filter(c=>c.is_test).map(cat=><div key={cat.id} className={styles.configGroup}><strong className={styles.recipeResultsTitle}>{cat.name} · Décompte TEST</strong>{data.candidates.filter(c=>c.category_id===cat.id).map(c=><p key={c.id} className={styles.note}>{c.name} — {recipeVotes.filter(v=>v.candidate_id===c.id).length} vote(s) TEST</p>)}</div>)}
     {recipeMessage&&<p role="status" className={styles.note}>{recipeMessage}</p>}
-  </section>
+  </section> 
   <section className={`${styles.panel} ${styles.cleanupPanel}`}><h2>Nettoyage avant production</h2>
     <p className={styles.note}>Supprime uniquement les catégories de recette, leurs candidats et tous les bulletins marqués TEST (y compris les anciens tests techniques). Les 21 awards officiels et les votes non-test sont préservés. Le scrutin officiel doit être fermé.</p>
     <button type="button" className={styles.dangerButton} disabled={busy} onClick={async()=>{const confirmation=window.prompt('Pour supprimer définitivement les données de test, saisissez exactement SUPPRIMER TEST. Cette opération ne supprime aucune catégorie officielle.');if(confirmation!=='SUPPRIMER TEST')return;const ok=await act({action:'recipe-cleanup',confirm:confirmation});if(ok){setRecipeMessage('Données de test supprimées. Vérifiez Participants, puis préparez la configuration de production.');setTestNotice('');setTab('setup')}}}>Supprimer uniquement les données de TEST</button>
