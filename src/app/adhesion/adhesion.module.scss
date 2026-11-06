@@ -18,6 +18,7 @@
   flex: 0.3;
   background: linear-gradient(135deg, $primary-blue 0%, $primary-blue-dark 100%);
   position: relative;
+  color: $white;
   
   @media (max-width: $breakpoint-lg) {
     min-height: 40vh;
@@ -79,6 +80,7 @@
     font-weight: 700;
     margin-bottom: $spacing-lg;
     line-height: 1.2;
+    color: $white;
     
     @media (max-width: $breakpoint-lg) {
       font-size: $font-size-xl;
@@ -94,6 +96,7 @@
     opacity: 0.9;
     font-weight: 400;
     margin-bottom: $spacing-lg;
+    color: $white;
     
     @media (max-width: $breakpoint-lg) {
       font-size: $font-size-base;
@@ -110,6 +113,7 @@
     max-width: 400px;
     margin: 0 auto;
     line-height: 1.8;
+    color: $white;
     
     @media (max-width: $breakpoint-lg) {
       font-size: $font-size-sm;

@@ -27,7 +27,7 @@ export default function SessionInformationPage() {
               </div>
             </div>
             <h1 className={styles.title}>
-              Session d'Information
+              2e Session d'Information
             </h1>
             <p className={styles.subtitle}>
               Cohorte 2026 - Rejoignez l'aventure JCI

@@ -10,7 +10,7 @@ export default function LayoutContent({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isPresencePage = pathname === '/presence' || pathname === '/session-information' || pathname === '/preinscriptions' || pathname === '/adhesion' || pathname === '/adherents';
+  const isPresencePage = pathname === '/presence' || pathname === '/session-information' || pathname === '/preinscriptions' || pathname === '/adhesion' || pathname === '/adherents' || pathname === '/integrer' || pathname.startsWith('/full-vibes-awards');
 
   return (
     <>

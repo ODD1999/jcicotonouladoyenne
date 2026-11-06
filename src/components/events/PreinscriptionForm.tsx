@@ -36,8 +36,8 @@ export default function PreinscriptionForm() {
     seconds: 0,
   });
 
-  // Date de l'événement - 07 février 2026 à 9h30
-  const eventDate = new Date('2026-02-07T09:30:00');
+  // Date de l'événement - 14 mars 2026 à 16h00
+  const eventDate = new Date('2026-03-14T16:00:00');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -275,7 +275,7 @@ export default function PreinscriptionForm() {
                       month: 'long', 
                       day: 'numeric' 
                     })}</p>
-                    <p>Heure: 09:30</p>
+                    <p>Heure: 16:00</p>
                   </div>
                 </div>
               </div>

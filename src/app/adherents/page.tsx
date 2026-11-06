@@ -27,6 +27,8 @@ interface Adherent {
   formationsSuivies: boolean;
   themesFormations: Array<{theme: string, formateur: string}>;
   disposeAcquitterFrais: boolean;
+  cvUrl: string;
+  pieceIdentiteUrl: string;
   createdAt: string;
 }
 
@@ -55,11 +57,14 @@ export default function AdherentsPage() {
   const fetchAdherents = async () => {
     try {
       const response = await fetch('/api/adhesion');
-      const data = await response.json();
+      const result = await response.json();
+      const data = result.success ? result.data : [];
       setAdherents(data);
       setFilteredAdherents(data);
     } catch (error) {
       console.error('Erreur lors de la récupération des adhérents:', error);
+      setAdherents([]);
+      setFilteredAdherents([]);
     } finally {
       setLoading(false);
     }
@@ -84,7 +89,7 @@ export default function AdherentsPage() {
       'Formation', 'Profession', 'Adresse', 'Employeur', 'Comment connu JCI', 'Attentes JCI',
       'Autre organisation', 'Type organisation', 'Responsabilités', 'Quelles responsabilités',
       'Nom parrain', 'Accepte formation', 'Formations suivies', 'Thèmes formations',
-      'Dispose acquitter frais', 'Date de création'
+      'Dispose acquitter frais', 'CV', 'Pièce d\'identité', 'Date création'
     ];
 
     const csvRows = data.map(adherent => [
@@ -100,16 +105,18 @@ export default function AdherentsPage() {
       adherent.adresse,
       adherent.employeur,
       adherent.commentConnueJci,
-      adherent.attentesJci.join('; '),
+      Array.isArray(adherent.attentesJci) ? adherent.attentesJci.join('; ') : adherent.attentesJci || '',
       adherent.autreOrganisation ? 'Oui' : 'Non',
       adherent.typeOrganisation || '',
       adherent.responsabilites ? 'Oui' : 'Non',
-      adherent.quellesResponsabilites.join('; '),
+      Array.isArray(adherent.quellesResponsabilites) ? adherent.quellesResponsabilites.join('; ') : adherent.quellesResponsabilites || '',
       adherent.nomParrain,
       adherent.accepteFormation ? 'Oui' : 'Non',
       adherent.formationsSuivies ? 'Oui' : 'Non',
-      adherent.themesFormations.map(f => `${f.theme} (${f.formateur})`).join('; '),
+      Array.isArray(adherent.themesFormations) ? adherent.themesFormations.map(f => `${f.theme} (${f.formateur})`).join('; ') : '',
       adherent.disposeAcquitterFrais ? 'Oui' : 'Non',
+      adherent.cvUrl ? 'CV disponible' : 'CV non fourni',
+      adherent.pieceIdentiteUrl ? 'Pièce disponible' : 'Pièce non fournie',
       new Date(adherent.createdAt).toLocaleDateString('fr-FR')
     ]);
 
@@ -139,7 +146,7 @@ export default function AdherentsPage() {
             <div className={styles.statCard}>
               <FiUser className={styles.statIcon} />
               <div>
-                <p className={styles.statNumber}>{filteredAdherents.length}</p>
+                <p className={styles.statNumber}>{Array.isArray(filteredAdherents) ? filteredAdherents.length : 0}</p>
                 <p className={styles.statLabel}>Total</p>
               </div>
             </div>
@@ -147,7 +154,7 @@ export default function AdherentsPage() {
               <FiCalendar className={styles.statIcon} />
               <div>
                 <p className={styles.statNumber}>
-                  {adherents.filter(a => new Date(a.createdAt).toDateString() === new Date().toDateString()).length}
+                  {Array.isArray(adherents) ? adherents.filter(a => new Date(a.createdAt).toDateString() === new Date().toDateString()).length : 0}
                 </p>
                 <p className={styles.statLabel}>Aujourd'hui</p>
               </div>
@@ -284,7 +291,9 @@ export default function AdherentsPage() {
                     </div>
                     <div className={styles.infoItem}>
                       <p className={styles.infoLabel}>Attentes</p>
-                      <p className={styles.infoValue}>{selectedAdherent.attentesJci.join(', ')}</p>
+                      <p className={styles.infoValue}>
+                        {Array.isArray(selectedAdherent.attentesJci) ? selectedAdherent.attentesJci.join(', ') : selectedAdherent.attentesJci || ''}
+                      </p>
                     </div>
                     <div className={styles.infoItem}>
                       <p className={styles.infoLabel}>Nom du parrain</p>
@@ -297,7 +306,7 @@ export default function AdherentsPage() {
                   </div>
                 </div>
 
-                {selectedAdherent.formationsSuivies && selectedAdherent.themesFormations.length > 0 && (
+                {selectedAdherent.formationsSuivies && Array.isArray(selectedAdherent.themesFormations) && selectedAdherent.themesFormations.length > 0 && (
                   <div className={styles.section}>
                     <h3>Formations suivies</h3>
                     <div className={styles.formationsList}>
@@ -310,6 +319,43 @@ export default function AdherentsPage() {
                     </div>
                   </div>
                 )}
+
+                <div className={styles.section}>
+                  <h3>Documents</h3>
+                  <div className={styles.documentsList}>
+                    {selectedAdherent.pieceIdentiteUrl && (
+                      <div className={styles.documentItem}>
+                        <p><strong>Pièce d'identité:</strong></p>
+                        <a 
+                          href={selectedAdherent.pieceIdentiteUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={styles.documentLink}
+                        >
+                          📄 Voir la pièce d'identité
+                        </a>
+                      </div>
+                    )}
+                    
+                    {selectedAdherent.cvUrl && (
+                      <div className={styles.documentItem}>
+                        <p><strong>Curriculum Vitae:</strong></p>
+                        <a 
+                          href={selectedAdherent.cvUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={styles.documentLink}
+                        >
+                          📄 Voir le CV
+                        </a>
+                      </div>
+                    )}
+                    
+                    {!selectedAdherent.pieceIdentiteUrl && !selectedAdherent.cvUrl && (
+                      <p className={styles.noDocuments}>Aucun document téléversé</p>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

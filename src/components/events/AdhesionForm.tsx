@@ -170,25 +170,67 @@ const AdhesionForm: React.FC = () => {
     }));
   };
 
+  const uploadFile = async (file: File, folder: string) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', folder);
+    console.log("File: ", file);
+    console.log("Folder: ", folder);
+    console.log("File: ", JSON.stringify(formData));
+
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    console.log("Response: ", response);
+
+    if (!response.ok) {
+      throw new Error('Failed to upload file');
+    }
+
+    const result = await response.json();
+    return result.url;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     try {
+      // Uploader les fichiers d'abord
+      let pieceIdentiteUrl = '';
+      let cvUrl = '';
+      
+      if (formData.pieceIdentite) {
+        pieceIdentiteUrl = await uploadFile(formData.pieceIdentite, 'pieces-identite');
+      }
+      
+      if (formData.cv) {
+        cvUrl = await uploadFile(formData.cv, 'cv');
+      }
+
+      // Préparer les données avec les URLs des fichiers
+      const submissionData = {
+        ...formData,
+        pieceIdentiteUrl,
+        cvUrl,
+      };
+
       const response = await fetch('/api/adhesion', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
+
+      console.log("Response Response: ", response);
 
       if (response.ok) {
         handleStepChange(totalSteps);
       } else {
-        console.error('Error submitting form');
+        console.error('Error submitting form form');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Même en cas d'erreur, on continue pour une meilleure UX
-      handleStepChange(totalSteps);
     }
   };
 
@@ -202,7 +244,7 @@ const AdhesionForm: React.FC = () => {
         if (!formData.autreOrganisation) return true;
         return formData.typeOrganisation;
       case 3:
-        return formData.nomParrain && formData.accepteFormation;
+        return formData.accepteFormation;
       case 4:
         if (!formData.formationsSuivies) return true;
         return formData.themesFormations.some(t => t.theme && t.formateur) && formData.motivation.trim().split(/\s+/).filter((word: string) => word.length > 0).length > 0;
@@ -460,7 +502,7 @@ const Step1 = ({ formData, handleInputChange }: any) => (
       <div className={styles.formGroup}>
         <label className={styles.label}>
           <FiUpload className={styles.icon} />
-          Pièce d'identité
+          Pièce d'identité (pdf, jpg, png)
         </label>
         <input
           type="file"
@@ -860,7 +902,7 @@ const Step6 = ({ formData, handleInputChange }: any) => (
     <h3 className={styles.stepTitle}>Validation Finale</h3>
     
     <InfoBlock title="Frais d'Adhésion">
-      <p>Au moment de la confirmation de votre volonté d'adhérer à la Jeune Chambre, vous serez appelé à acquitter des frais de dossier et d'adhésion fixés à vingt mille (20 000) FCFA.</p>
+      <p>Au moment de la confirmation de votre volonté d'adhérer à la Jeune Chambre, vous serez appelé à vous acquitter des frais de dossier et d'adhésion fixés à vingt mille (20 000) FCFA ainsi que de la cotisation de l'année en cours (30 000) FCFA.</p>
     </InfoBlock>
     
     <div className={styles.questionBlock}>

@@ -1,0 +1,770 @@
+@import '../../styles/variables';
+
+.integrerPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.hero {
+  background: linear-gradient(135deg, $primary-blue 0%, #1e40af 100%);
+  padding: $spacing-3xl 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.logo {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.heroTitle {
+  // font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: $white;
+  margin-bottom: $spacing-md;
+  line-height: 1.2;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.highlight {
+  color: $accent-yellow;
+  display: block;
+  margin-top: $spacing-sm;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-2xl $spacing-lg;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: $gray-900;
+  margin-bottom: $spacing-md;
+}
+
+.titleUnderline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, $primary-blue, $accent-yellow);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.aboutSection {
+  margin-bottom: $spacing-3xl;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+}
+
+.card {
+  background: $white;
+  padding: $spacing-xl;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all $transition-base;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: $primary-blue;
+  }
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: $spacing-md;
+  text-align: center;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: $primary-blue;
+  margin-bottom: $spacing-md;
+  text-align: center;
+}
+
+.cardText {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $gray-700;
+  text-align: center;
+
+  strong {
+    color: $primary-blue;
+    font-weight: 600;
+  }
+}
+
+.visionMissionSection {
+  margin-bottom: $spacing-3xl;
+}
+
+.visionMissionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+}
+
+.visionCard,
+.missionCard {
+  background: linear-gradient(135deg, rgba(0, 83, 176, 0.05) 0%, rgba(0, 83, 176, 0.1) 100%);
+  padding: $spacing-2xl;
+  border-radius: 16px;
+  border: 2px solid $primary-blue;
+  text-align: center;
+  transition: all $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 172, 0, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 83, 176, 0.2);
+    border-color: $accent-yellow;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.vmIcon {
+  font-size: 3rem;
+  margin-bottom: $spacing-md;
+  position: relative;
+  z-index: 1;
+}
+
+.vmTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $primary-blue;
+  margin-bottom: $spacing-md;
+  position: relative;
+  z-index: 1;
+}
+
+.vmText {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: $gray-700;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.credoBox {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: $spacing-2xl;
+  border-radius: 20px;
+  border: 3px solid $primary-blue;
+  box-shadow: 0 8px 30px rgba(0, 83, 176, 0.15);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, $primary-blue 0%, $accent-yellow 50%, $accent-orange 100%);
+  }
+}
+
+.credoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.credoIcon {
+  font-size: 2.5rem;
+}
+
+.credoTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $primary-blue;
+  margin: 0;
+}
+
+.credoIntro {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: $gray-800;
+  text-align: center;
+  margin-bottom: $spacing-lg;
+  font-style: italic;
+}
+
+.credoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: $spacing-md;
+
+  li {
+    padding: $spacing-md $spacing-lg;
+    padding-left: $spacing-2xl;
+    background: $white;
+    border-radius: 12px;
+    position: relative;
+    color: $gray-700;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all $transition-fast;
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: $spacing-md;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $white;
+      background: linear-gradient(135deg, $primary-blue 0%, #1e40af 100%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    &:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0, 83, 176, 0.15);
+    }
+  }
+}
+
+.formSection {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding: $spacing-3xl;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0, 83, 176, 0.12),
+    0 0 0 1px rgba(0, 83, 176, 0.08);
+  margin-top: $spacing-3xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, $primary-blue 0%, $accent-yellow 50%, $accent-orange 100%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 83, 176, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+.formContainer {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: $spacing-3xl;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -$spacing-lg;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, $primary-blue, $accent-yellow);
+    border-radius: 2px;
+  }
+}
+
+.formTitle {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, $primary-blue 0%, #1e40af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: $spacing-md;
+  letter-spacing: -0.02em;
+}
+
+.formSubtitle {
+  font-size: 1.1rem;
+  color: $gray-600;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.successMessage {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  padding: $spacing-lg;
+  border-radius: 12px;
+  margin-bottom: $spacing-xl;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  animation: slideInDown 0.5s ease-out;
+
+  p {
+    margin: 0;
+    color: #065f46;
+    font-weight: 500;
+  }
+}
+
+.successIcon {
+  width: 40px;
+  height: 40px;
+  background: #10b981;
+  color: $white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.errorMessage {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: $spacing-lg;
+  border-radius: 12px;
+  margin-bottom: $spacing-xl;
+  animation: shake 0.5s ease-out;
+
+  p {
+    margin: 0;
+    color: #991b1b;
+    font-weight: 500;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-xl;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  position: relative;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $primary-blue;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &::before {
+    content: '';
+    width: 3px;
+    height: 12px;
+    background: linear-gradient(135deg, $primary-blue, $accent-yellow);
+    border-radius: 2px;
+  }
+}
+
+.input {
+  padding: $spacing-md $spacing-lg;
+  border: 2px solid $gray-200;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all $transition-base;
+  background: $white;
+  font-weight: 500;
+  color: $gray-900;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+
+  &:hover {
+    border-color: $gray-300;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+    box-shadow: 
+      0 0 0 4px rgba(0, 83, 176, 0.1),
+      0 4px 16px rgba(0, 83, 176, 0.15);
+    transform: translateY(-1px);
+  }
+
+  &::placeholder {
+    color: $gray-400;
+    font-weight: 400;
+  }
+}
+
+.submitButton {
+  padding: $spacing-lg $spacing-2xl;
+  background: linear-gradient(135deg, $primary-blue 0%, #1e40af 100%);
+  color: $white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: 
+    0 8px 20px rgba(0, 83, 176, 0.3),
+    0 2px 8px rgba(0, 83, 176, 0.2);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 12px 30px rgba(0, 83, 176, 0.4),
+      0 4px 12px rgba(0, 83, 176, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 
+      0 6px 20px rgba(0, 83, 176, 0.35),
+      0 2px 8px rgba(0, 83, 176, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Animations
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+// Responsive Mobile-First
+@media (max-width: $breakpoint-md) {
+  .hero {
+    padding: $spacing-2xl 0;
+  }
+
+  .container {
+    padding: $spacing-xl $spacing-md;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+
+  .visionMissionGrid {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+
+  .formSection {
+    padding: $spacing-xl $spacing-md;
+  }
+
+  .card {
+    padding: $spacing-lg;
+  }
+
+  .testimonialBox {
+    padding: $spacing-lg;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .cardText {
+    font-size: 0.95rem;
+  }
+
+  .achievementText {
+    font-size: 1rem;
+  }
+
+  .testimonialQuote {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .hero {
+    padding: $spacing-lg 0;
+  }
+
+  .heroContent {
+    padding: 0 $spacing-md;
+  }
+
+  .heroTitle {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .heroSubtitle {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .container {
+    padding: $spacing-md $spacing-sm;
+  }
+
+  .sectionHeader {
+    margin-bottom: $spacing-lg;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+  }
+
+  .formSection {
+    padding: $spacing-md $spacing-sm;
+    border-radius: 12px;
+  }
+
+  .card {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .cardIcon {
+    font-size: 1.75rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardText {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .credoBox {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .credoIcon {
+    font-size: 1.75rem;
+  }
+
+  .credoTitle {
+    font-size: 1.15rem;
+  }
+
+  .credoIntro {
+    font-size: 0.9rem;
+  }
+
+  .credoList li {
+    font-size: 0.85rem;
+    padding: $spacing-xs $spacing-sm;
+    padding-left: $spacing-xl;
+
+    &::before {
+      width: 20px;
+      height: 20px;
+      font-size: 0.8rem;
+      left: $spacing-xs;
+    }
+  }
+
+  .vmIcon {
+    font-size: 2rem;
+  }
+
+  .vmTitle {
+    font-size: 1.05rem;
+  }
+
+  .vmText {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .formTitle {
+    font-size: 1.25rem;
+  }
+
+  .formSubtitle {
+    font-size: 0.85rem;
+  }
+
+  .label {
+    font-size: 0.85rem;
+  }
+
+  .input {
+    padding: $spacing-xs $spacing-sm;
+    font-size: 0.9rem;
+    height: 45px;
+  }
+
+  .submitButton {
+    padding: $spacing-sm $spacing-md;
+    font-size: 0.9rem;
+    height: 45px;
+  }
+}

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { sql } from '@vercel/postgres';
 import { neon } from '@neondatabase/serverless';
 
 interface AdhesionData {
@@ -9,7 +10,8 @@ interface AdhesionData {
   profession: string;
   adresse: string;
   employeur: string;
-  dateLieuNaissance: string;
+  dateNaissance: string;
+  lieuNaissance: string;
   contact: string;
   email: string;
   telephone: string;
@@ -53,7 +55,8 @@ async function initDatabase() {
       profession TEXT,
       adresse TEXT,
       employeur TEXT,
-      date_lieu_naissance TEXT,
+      date_naissance TEXT,
+      lieu_naissance TEXT,
       contact TEXT,
       email VARCHAR(255) UNIQUE NOT NULL,
       telephone VARCHAR(255) NOT NULL,
@@ -71,6 +74,8 @@ async function initDatabase() {
       parrain_necessaire_connue BOOLEAN DEFAULT FALSE,
       a_parrain BOOLEAN DEFAULT FALSE,
       nom_parrain TEXT,
+      cv_url TEXT,
+      piece_identite_url TEXT,
       formation_evaluation_connue BOOLEAN DEFAULT FALSE,
       accepte_formation BOOLEAN DEFAULT FALSE,
       formations_suivies BOOLEAN DEFAULT FALSE,
@@ -97,7 +102,8 @@ export async function GET() {
       profession: row.profession,
       adresse: row.adresse,
       employeur: row.employeur,
-      dateLieuNaissance: row.date_lieu_naissance,
+      dateNaissance: row.date_naissance,
+      lieuNaissance: row.lieu_naissance,
       contact: row.contact,
       email: row.email,
       telephone: row.telephone,
@@ -115,12 +121,15 @@ export async function GET() {
       parrainNecessaireConnue: row.parrain_necessaire_connue,
       aParrain: row.a_parrain,
       nomParrain: row.nom_parrain,
+      cvUrl: row.cv_url,
+      pieceIdentiteUrl: row.piece_identite_url,
       formationEvaluationConnue: row.formation_evaluation_connue,
       accepteFormation: row.accepte_formation,
       formationsSuivies: row.formations_suivies,
       themesFormations: row.themes_formations,
       fraisConnus: row.frais_connus,
       disposeAcquitterFrais: row.dispose_acquitter_frais,
+      createdAt: row.timestamp,
       timestamp: row.timestamp,
     }));
     
@@ -142,6 +151,10 @@ export async function POST(request: NextRequest) {
     const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     const timestamp = new Date().toISOString();
     
+    // Récupérer les URLs des fichiers depuis le corps de la requête
+    const pieceIdentiteUrl = body.pieceIdentiteUrl || '';
+    const cvUrl = body.cvUrl || '';
+    
     // Convertir les tableaux en chaînes JSON pour le stockage
     const attentesJciJson = JSON.stringify(body.attentesJci || []);
     const quellesResponsabilitesJson = JSON.stringify(body.quellesResponsabilites || []);
@@ -150,25 +163,26 @@ export async function POST(request: NextRequest) {
     await sql`
       INSERT INTO adhesions (
         id, nom, prenoms, formation, profession, adresse, employeur, 
-        date_lieu_naissance, contact, email, telephone, comment_connue_jci, 
+        date_naissance, lieu_naissance, contact, email, telephone, comment_connue_jci, 
         autres_comment_connue, attentes_jci, autres_attentes, autre_organisation,
         type_organisation, autres_type_organisation, responsabilites,
         quelles_responsabilites, autres_responsabilites, periode_probatoire_connue,
         parrain_necessaire_connue, a_parrain, nom_parrain, formation_evaluation_connue,
         accepte_formation, formations_suivies, themes_formations, frais_connus,
-        dispose_acquitter_frais, timestamp
+        dispose_acquitter_frais, cv_url, piece_identite_url, timestamp
       ) VALUES (
         ${id}, ${body.nom}, ${body.prenoms}, ${body.formation}, ${body.profession},
-        ${body.adresse}, ${body.employeur}, ${body.dateLieuNaissance}, ${body.contact},
+        ${body.adresse}, ${body.employeur}, ${body.dateNaissance}, ${body.lieuNaissance}, ${body.contact},
         ${body.email}, ${body.telephone}, ${body.commentConnueJci}, ${body.autresCommentConnue},
         ${attentesJciJson}, ${body.autresAttentes}, ${body.autreOrganisation},
         ${body.typeOrganisation}, ${body.autresTypeOrganisation}, ${body.responsabilites},
         ${quellesResponsabilitesJson}, ${body.autresResponsabilites}, ${body.periodeProbatoireConnue},
         ${body.parrainNecessaireConnue}, ${body.aParrain}, ${body.nomParrain}, ${body.formationEvaluationConnue},
         ${body.accepteFormation}, ${body.formationsSuivies}, ${themesFormationsJson}, ${body.fraisConnus},
-        ${body.disposeAcquitterFrais}, ${timestamp}
+        ${body.disposeAcquitterFrais}, ${cvUrl}, ${pieceIdentiteUrl}, ${timestamp}
       )
     `;
+    
     
     return NextResponse.json({ 
       success: true, 
