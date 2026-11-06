@@ -26,3 +26,4 @@ else{
   console.log(name+': Preview configuré.');
  }
 }
+ 
