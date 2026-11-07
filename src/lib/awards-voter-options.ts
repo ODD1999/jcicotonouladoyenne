@@ -47,4 +47,4 @@ export const OL_SOEURS = [
   "JCI Ouidah La Couronne",
   "JCI Ouidah Wéziza"
 ] as const;
-export const TITLES = ['Membre', 'Sénateur', 'Officer', 'Past President'] as const;
+export const TITLES = ['Membre', 'Officer', 'Past President', 'Sénateur'] as const;
