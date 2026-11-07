@@ -130,9 +130,6 @@ export default function FullVibesAwards() {
       <div className={styles.glowOne} />
       <div className={styles.glowTwo} />
       <header className={styles.topbar}>
-        <Link href="/" className={styles.brand}>
-          JCI <span>Cotonou La Doyenne</span>
-        </Link>
         <Link className={styles.logo} href="/">
           <img src="/logos/logo-white.png" alt="JCI Logo" />
         </Link>
