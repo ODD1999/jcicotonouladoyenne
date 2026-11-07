@@ -5,8 +5,8 @@ import {OL_SOEURS,TITLES} from '@/lib/awards-voter-options';
 export const runtime='nodejs';
 export async function GET(){
  try{const s=await schema();const [categories,candidates,settings]=await Promise.all([
- s`SELECT id,name,description FROM fva_categories WHERE active=TRUE AND is_test=FALSE AND selection_mode='public' ORDER BY position,id`,
- s`SELECT c.id,c.category_id,c.name,c.title,c.photo FROM fva_candidates c JOIN fva_categories a ON a.id=c.category_id WHERE c.active=TRUE AND c.is_test=FALSE AND a.active=TRUE AND a.is_test=FALSE AND a.selection_mode='public' ORDER BY c.id`,
+ s`SELECT id,name,description FROM fva_categories WHERE active=TRUE AND is_test=FALSE AND EXISTS (SELECT 1 FROM fva_candidates c WHERE c.category_id=fva_categories.id AND c.active=TRUE AND c.is_test=FALSE) ORDER BY position,id`,
+ s`SELECT c.id,c.category_id,c.name,c.title,c.photo FROM fva_candidates c JOIN fva_categories a ON a.id=c.category_id WHERE c.active=TRUE AND c.is_test=FALSE AND a.active=TRUE AND a.is_test=FALSE ORDER BY c.id`,
  s`SELECT voting_open FROM fva_settings WHERE id=1`]);
  const publicCategories=categories.map(c=>({...c,id:Number(c.id)}));
  const publicCandidates=candidates.map(c=>({...c,id:Number(c.id),category_id:Number(c.category_id)}));
@@ -21,7 +21,7 @@ export async function POST(req:NextRequest){
  if(data.some(v=>!Number.isSafeInteger(v.category_id)||!Number.isSafeInteger(v.candidate_id))||new Set(data.map(v=>v.category_id)).size!==data.length)return NextResponse.json({error:'Sélections invalides'},{status:400});
  const s=await schema(),id=randomUUID(),json=JSON.stringify(data);
  const result=await s`WITH selection AS (SELECT * FROM jsonb_to_recordset(${json}::jsonb) AS x(category_id bigint,candidate_id bigint)),
- valid AS (SELECT count(*) AS n FROM selection v JOIN fva_candidates c ON c.id=v.candidate_id AND c.category_id=v.category_id AND c.active=TRUE AND c.is_test=FALSE JOIN fva_categories a ON a.id=c.category_id AND a.active=TRUE AND a.is_test=FALSE AND a.selection_mode='public'),
+ valid AS (SELECT count(*) AS n FROM selection v JOIN fva_candidates c ON c.id=v.candidate_id AND c.category_id=v.category_id AND c.active=TRUE AND c.is_test=FALSE JOIN fva_categories a ON a.id=c.category_id AND a.active=TRUE AND a.is_test=FALSE),
  inserted AS (INSERT INTO fva_ballots(id,first_name,last_name,phone,participant_title,participant_type,organization)
  SELECT ${id}::uuid,${firstName},${lastName},${phone},${title},${type},${type==='ol'?org:''}
  WHERE (SELECT voting_open FROM fva_settings WHERE id=1)

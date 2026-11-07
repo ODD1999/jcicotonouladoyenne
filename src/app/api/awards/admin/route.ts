@@ -152,15 +152,15 @@ export async function POST(req:NextRequest){
   if(Boolean(b.open)){
    const [missing,tests,eligible]=await Promise.all([
     s`SELECT name FROM fva_categories a WHERE a.active=TRUE AND a.is_test=FALSE
-       AND a.selection_mode='public' AND NOT EXISTS
+       AND NOT EXISTS
        (SELECT 1 FROM fva_candidates c WHERE c.category_id=a.id AND c.active=TRUE AND c.is_test=FALSE)`,
     s`SELECT (SELECT count(*) FROM fva_ballots WHERE is_test=TRUE)
       +(SELECT count(*) FROM fva_categories WHERE is_test=TRUE)
        +(SELECT count(*) FROM fva_candidates WHERE is_test=TRUE) AS total`,
-    s`SELECT count(*) AS n FROM fva_categories WHERE active=TRUE AND is_test=FALSE AND selection_mode='public'`
+    s`SELECT count(*) AS n FROM fva_categories WHERE active=TRUE AND is_test=FALSE`
    ]);
    if(Number(tests[0].total)>0)return NextResponse.json({error:'Nettoyez les données de recette avant d’ouvrir le vote officiel.'},{status:409});
-   if(Number(eligible[0].n)===0)return NextResponse.json({error:'Aucun award ouvert au vote public.'},{status:409});
+   if(Number(eligible[0].n)===0)return NextResponse.json({error:'Aucun award actif et admissible au vote public.'},{status:409});
    if(missing.length)return NextResponse.json({error:'Awards sans candidats actifs : '+missing.map(x=>x.name).join(', ')},{status:409});
   }
   await s`UPDATE fva_settings SET voting_open=${Boolean(b.open)} WHERE id=1`;

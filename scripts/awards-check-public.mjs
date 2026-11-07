@@ -1,0 +1,1 @@
+const url=process.env.AWARDS_CHECK_URL||'http://127.0.0.1:3002/api/awards';const response=await fetch(url);const d=await response.json();console.log(JSON.stringify({status:response.status,open:d.open,categories:d.categories?.length,candidates:d.candidates?.length,names:d.categories?.map(c=>c.name)},null,2));if(!response.ok||d.categories?.length!==13)process.exitCode=1;
