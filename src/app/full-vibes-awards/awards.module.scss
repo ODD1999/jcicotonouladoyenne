@@ -40,6 +40,33 @@
   justify-content: space-between;
   gap: 20px;
 }
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 240px;
+  min-height: 64px;
+  padding: 6px 0;
+  text-decoration: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: clamp(48px, 5vw, 68px);
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 3px 12px rgba(255, 255, 255, .1));
+}
+.logo:hover { opacity: .9; transform: translateY(-1px); }
+.logo:focus-visible { outline: 2px solid #ffbd35; outline-offset: 5px; border-radius: 5px; }
+@media (max-width: 620px) {
+  .logo { max-width: 165px; min-height: 48px; }
+  .logo img { height: 46px; }
+}
 .brand {
   color: white;
   font-weight: 900;
